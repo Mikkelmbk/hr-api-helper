@@ -54,6 +54,63 @@ body{
 
 /* Main Begins */
  .main{
+    display:flex;
     flex-grow:1;
+    padding:60px 40px;
+}
+
+.main__endpoint-builder{
+    width:100%;
+    display:flex;
+    position:relative;
+}
+
+.main__endpoint-output-container{
+    height:80px;
+    width:100%;
+    border:2px solid #777;
+    background-color:rgb(199, 199, 199);
+    border-radius:4px;
+    display:flex;
+    align-items:center;
+    padding:8px 20px;
+}
+
+.main__endpoint-output{
+}
+
+.main__endpoint-output-border-position{
+    top:-9px;
+    position:absolute;
+    color:white;
+    background-color:#298eea;
+    border-radius:4px;
+    padding:2px 8px;
+}
+
+.main__endpoint-output-description{
+    left:1rem;
+    user-select:none;
+    /* color:black; */
+    /* top:-22px; */
+    /* border-top:2px solid #333;
+    border-right:2px solid #333;
+    border-left:2px solid #333; */
+    /* border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; */
+}
+
+.main__endpoint-output-clipboard-copy{
+    left:22rem;
+    cursor:pointer;
+    border:unset;
+    font-size:16px;
+}
+
+.main__endpoint-output-test{
+    left:31rem;
+    cursor:pointer;
+    border:unset;
+    font-size:16px;
 }
 
