@@ -30,7 +30,76 @@
                     <button class="main__endpoint-output-test">Test Endpoint</button>
                 </div>
                 <div class="main__endpoint-output-inner-container">
-                    <p class="main__endpoint-output">google.com</p>
+                    <p class="main__endpoint-output">https://www.addwish.com/api/v1/product-recommendation/getProductBoxes?format=json</p>
+                </div>
+            </div>
+            <div class="main__endpoint-constructor-wrapper">
+                <div class="main__endpoint-constructor-border-position">
+                    <p class="main__endpoint-constructor-description">Picked menu name here</p>
+                </div>
+                <div class="main__endpoint-constructor-outer-container">
+                    <div class="main__endpoint-constructor-outer-recom-container">
+
+                        <section class="main__endpoint-constructor-recom-container url">
+                            <div>
+                                <input type="text" class="main__endpoint-constructor-recom-input url">
+                                <label class="main__endpoint-constructor-recom-label url">Context url (Optional)</label>
+                            </div>
+                            <button class="main__endpoint-constructor-recom-button url">Add parameter</button>
+                        </section>
+
+                        <section class="main__endpoint-constructor-recom-container tracking-user-id">
+                            <div>
+                                <input type="text" class="main__endpoint-constructor-recom-input tracking-user-id">
+                                <label class="main__endpoint-constructor-recom-label tracking-user-id">Tracking user id (Optional)</label>
+                            </div>
+                            <button class="main__endpoint-constructor-recom-button tracking-user-id">Add parameter</button>
+                        </section>
+
+                        <section class="main__endpoint-constructor-recom-container product-box-id">
+                            <div>
+                                <input placeholder="Example: 1234, 5678" type="text" class="main__endpoint-constructor-recom-input product-box-id">
+                                <label class="main__endpoint-constructor-recom-label product-box-id">Recommendation box key (Required)</label>
+                            </div>
+                            <button class="main__endpoint-constructor-recom-button product-box-id">Add parameter</button>
+                        </section>
+
+                        <section class="main__endpoint-constructor-recom-container hierarchy">
+                            <div>
+                                <input placeholder="Example: mountainbikes" type="text" class="main__endpoint-constructor-recom-input hierarchy">
+                                <label class="main__endpoint-constructor-recom-label hierarchy">Hierarchy (Optional)</label>
+                            </div>
+                            <button class="main__endpoint-constructor-recom-button hierarchy">Add parameter</button>
+                        </section>
+
+                        <section class="main__endpoint-constructor-recom-container crawledData">
+                            <div>
+                                <input placeholder="Example: brand=Nike" type="text" class="main__endpoint-constructor-recom-input crawledData">
+                                <label class="main__endpoint-constructor-recom-label crawledData">crawledData (Optional)</label>
+                            </div>
+                            <button class="main__endpoint-constructor-recom-button crawledData">Add parameter</button>
+                        </section>
+
+                        <section class="main__endpoint-constructor-recom-container extraData-crawledData">
+                            <div>
+                                <input placeholder="Example: carBrand=Toyota" type="text" class="main__endpoint-constructor-recom-input extraData-crawledData">
+                                <label class="main__endpoint-constructor-recom-label extraData-crawledData">extraData crawledData (Optional)</label>
+                            </div>
+                            <button class="main__endpoint-constructor-recom-button extraData-crawledData">Add parameter</button>
+                        </section>
+
+                        <section class="main__endpoint-constructor-recom-container extraDataList-crawledData">
+                            <div>
+                                <input placeholder="Example: Series=Cars" type="text" class="main__endpoint-constructor-recom-input extraDataList-crawledData">
+                                <label class="main__endpoint-constructor-recom-label extraDataList-crawledData">extraDataList crawledData (Optional)</label>
+                            </div>
+                            <button class="main__endpoint-constructor-recom-button extraDataList-crawledData">Add parameter</button>
+                        </section>
+
+                    </div>
+                    <div class="main__endpoint-test-response-window">
+
+                    </div>
                 </div>
             </div>
         </div>
