@@ -19,6 +19,7 @@ body{
     display:flex;
     flex-direction:column;
 }
+
 /* Navigation Begins */
 .header{
     min-height:var(--header-height);
@@ -50,6 +51,7 @@ body{
     background-color:#298eea;
     color:white;
 }
+
 /* Main Begins */
  .main{
     flex-grow:1;
