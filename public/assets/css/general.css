@@ -1,0 +1,29 @@
+:root{
+    --header-height:6vh;
+    --label-focus-transition: opacity 0.2s ease;
+}
+
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    text-decoration:none;
+    color:unset;
+    list-style-type:none;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body{
+    background-color:white;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+.success-green-background{
+    background-color: #099633!important;
+}
+
+.hidden{
+    display:none!important;
+}

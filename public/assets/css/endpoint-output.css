@@ -1,0 +1,62 @@
+.main{
+    display:flex;
+    flex-grow:1;
+    padding:60px 40px;
+}
+
+.main__endpoint-builder{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+}
+
+.main__endpoint-output-inner-container{
+    min-height:80px;
+    border:2px solid #777;
+    background-color:rgb(199, 199, 199);
+    border-radius:4px;
+    display:flex;
+    align-items:center;
+    padding:8px 20px;
+}
+
+.main__endpoint-output-border-position{
+    position:absolute;
+    top:-9px;
+    left:12px;
+    display:flex;
+}
+
+.main__endpoint-output-description{
+    user-select:none;
+    background-color:black;
+    color:white;
+    padding:2px 8px;
+    border-radius:4px;
+    font-size:14px;
+    margin-right:8px;
+}
+
+.main__endpoint-output-clipboard-copy{
+    cursor:pointer;
+    border:unset;
+    width:136px;
+    background-color:black;
+    color:white;
+    padding:2px 8px;
+    border-radius:4px;
+    font-size:14px;
+    margin-right:8px;
+}
+
+.main__endpoint-output-test{
+    cursor:pointer;
+    border:unset;
+    width:109px;
+    background-color:black;
+    color:white;
+    padding:2px 8px;
+    border-radius:4px;
+    font-size:14px;
+}
