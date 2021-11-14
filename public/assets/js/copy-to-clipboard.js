@@ -1,6 +1,3 @@
-let copyToClipboardElem = document.querySelector(".main__endpoint-output-clipboard-copy");
-let outputElem = document.querySelector(".main__endpoint-output");
-
 copyToClipboardElem.addEventListener("click", () => {
     navigator.clipboard.writeText(outputElem.innerHTML);
     copyToClipboardElem.classList.add("success-green-background");
