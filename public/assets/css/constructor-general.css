@@ -1,0 +1,30 @@
+.main__endpoint-constructor-wrapper{
+    margin-top:60px;
+    position:relative;
+}
+
+.main__endpoint-constructor-border-position{
+    position:absolute;
+    top:-9px;
+    left:12px;
+    display:flex;
+}
+
+.main__endpoint-constructor-description{
+    user-select:none;
+    background-color:black;
+    color:white;
+    padding:2px 8px;
+    border-radius:4px;
+    font-size:14px;
+    margin-right:8px;
+}
+
+.main__endpoint-constructor-outer-container{
+    border:2px solid #777;
+    background-color:rgb(199, 199, 199);
+    border-radius:4px;
+    display:flex;
+    flex-wrap:wrap;
+    padding:20px;   
+}
