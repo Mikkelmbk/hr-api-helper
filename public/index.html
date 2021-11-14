@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/nav.js" defer></script>
+    <script src="assets/js/copy-to-clipboard.js" defer></script>
     <title>Hello retail API Helper</title>
 </head>
 
@@ -14,10 +15,10 @@
     <header class="header">
         <nav class="header__nav">
             <ul class="header__ul">
-                <li class="header__li">Recommendation REST Endpoint</li>
-                <li class="header__li">Search REST Endpoint</li>
-                <li class="header__li">Recommendation SDK Endpoint</li>
-                <li class="header__li">Search SDK Endpoint</li>
+                <li class="header__li"><a href="#recommendation-rest-endpoint">Recommendation REST Endpoint</a></li>
+                <li class="header__li"><a href="#search-rest-endpoint">Search REST Endpoint</a></li>
+                <!-- <li class="header__li"><a href="#recommendation-sdk-endpoint">Recommendation SDK Endpoint</a></li>
+                <li class="header__li"><a href="#search-sdk-endpoint">Search SDK Endpoint</a></li> -->
             </ul>
         </nav>
     </header>
@@ -30,12 +31,12 @@
                     <button class="main__endpoint-output-test">Test Endpoint</button>
                 </div>
                 <div class="main__endpoint-output-inner-container">
-                    <p class="main__endpoint-output">https://www.addwish.com/api/v1/product-recommendation/getProductBoxes?format=json</p>
+                    <p class="main__endpoint-output"></p>
                 </div>
             </div>
             <div class="main__endpoint-constructor-wrapper">
                 <div class="main__endpoint-constructor-border-position">
-                    <p class="main__endpoint-constructor-description">Picked menu name here</p>
+                    <p class="main__endpoint-constructor-description"></p>
                 </div>
                 <div class="main__endpoint-constructor-outer-container">
                     <div class="main__endpoint-constructor-outer-recom-container">
@@ -96,6 +97,8 @@
                             <button class="main__endpoint-constructor-recom-button extraDataList-crawledData">Add parameter</button>
                         </section>
 
+                    </div>
+                    <div class="main__endpoint-constructor-outer-search-container">
                     </div>
                     <div class="main__endpoint-test-response-window-container">
                         <div class="main__endpoint-test-response-window-border-position">

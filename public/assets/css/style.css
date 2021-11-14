@@ -25,6 +25,10 @@ body{
     background-color: #099633!important;
 }
 
+.hidden{
+    display:none!important;
+}
+
 /* Navigation Begins */
 .header{
     min-height:var(--header-height);
@@ -39,7 +43,7 @@ body{
     flex-wrap:wrap;
 }
 
-.header__li{
+.header__li > a{
     cursor:pointer;
     user-select:none;
     height:var(--header-height);
@@ -53,7 +57,7 @@ body{
     border-radius:2px;
 }
 
-.header__li:hover{
+.header__li > a:hover{
     background-color:#298eea;
     color:white;
 }
@@ -157,11 +161,13 @@ body{
 /* Main endpoint-constructor-recom Begins */
 .main__endpoint-constructor-outer-recom-container{
     margin-right:25px;
+    min-width:500px;
 }
 
 .main__endpoint-constructor-recom-container{
     display:flex;
     align-items:flex-end;
+    width:100%;
 }
 
 .main__endpoint-constructor-recom-container > div{
@@ -169,6 +175,7 @@ body{
     flex-direction:column;
     position:relative;
     margin-top:30px;
+    width:100%;
 }
 
 .main__endpoint-constructor-recom-label{
@@ -187,7 +194,7 @@ body{
 .main__endpoint-constructor-recom-input{
     border-radius:3px;
     height:35px;
-    width:400px;
+    /* width:400px; */
     padding-left:5px;
 }
 
@@ -197,7 +204,7 @@ body{
 
 .main__endpoint-constructor-recom-button{
     height:35px;
-    width:94px;
+    width:115px;
     background-color:#298eea;
     color:white;
     border:none;
