@@ -1,5 +1,4 @@
 constructorDisplay(window.location.hash);
-
 window.addEventListener('hashchange',(e)=>{
     let activeTab = e.newURL.split("#").pop();
     constructorDisplay(activeTab);
@@ -11,13 +10,13 @@ function constructorDisplay(activeTab){
     activeTab = activeTab.split("#").pop();
     if(activeTab === "recommendation-rest-endpoint" || activeTab === ""){
         outerRecomContainerElem.classList.remove("hidden");
-        document.querySelector(".main__endpoint-output").innerHTML = "https://www.addwish.com/api/v1/product-recommendation/getProductBoxes?format=json";
-        document.querySelector(".main__endpoint-constructor-description").innerHTML = "Recommendation REST Endpoint";
+        outputElem.innerHTML = "https://www.addwish.com/api/v1/product-recommendation/getProductBoxes?format=json";
+        endpointConstructorDescriptionElem.innerHTML = "Recommendation REST Endpoint";
 
     }
     else if(activeTab === "search-rest-endpoint"){
         outerSearchContainerElem.classList.remove("hidden");
-        document.querySelector(".main__endpoint-output").innerHTML = "https://www.addwish.com/api/v1/search/partnerSearch?key=";
-        document.querySelector(".main__endpoint-constructor-description").innerHTML = "Search REST Endpoint";
+        outputElem.innerHTML = "https://www.addwish.com/api/v1/search/partnerSearch?format=json";
+        endpointConstructorDescriptionElem.innerHTML = "Search REST Endpoint";
     }
 }
