@@ -1,5 +1,3 @@
-let outerRecomContainerElem = document.querySelector(".main__endpoint-constructor-outer-recom-container");
-let outerSearchContainerElem = document.querySelector(".main__endpoint-constructor-outer-search-container");
 constructorDisplay(window.location.hash);
 
 window.addEventListener('hashchange',(e)=>{
