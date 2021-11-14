@@ -5,5 +5,5 @@ copyToClipboardElem.addEventListener("click", () => {
     setTimeout(() => {
         copyToClipboardElem.classList.remove("success-green-background");
         copyToClipboardElem.innerHTML = "Copy to Clipboard";
-    }, 2500);
+    }, 2000);
 });
