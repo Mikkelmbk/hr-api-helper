@@ -28,3 +28,63 @@
     flex-wrap:wrap;
     padding:20px;   
 }
+
+/* Experimental CSS starting */
+
+.main__endpoint-constructor-outer-recom-container,.main__endpoint-constructor-outer-search-container{
+    margin-right:25px;
+    min-width:500px;
+}
+
+.main__endpoint-constructor-container{
+    display:flex;
+    align-items:flex-end;
+    width:100%;
+}
+
+.main__endpoint-constructor-container > div{
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    margin-top:30px;
+    width:100%;
+}
+
+.main__endpoint-constructor-label{
+    position:absolute;
+    top:-10px;
+    left:15px;
+    user-select:none;
+    background-color:black;
+    color:white;
+    padding:2px 8px;
+    border-radius:4px;
+    font-size:14px;
+    transition: var(--label-focus-transition);
+}
+
+.main__endpoint-constructor-input{
+    border-radius:3px;
+    height:35px;
+    padding-left:5px;
+}
+
+.main__endpoint-constructor-input:focus + .main__endpoint-constructor-label{
+    opacity:0;
+}
+
+.main__endpoint-constructor-button{
+    height:35px;
+    width:120px;
+    background-color:#298eea;
+    color:white;
+    border:none;
+    border-radius:3px;
+    padding:4px;
+    margin-left:2px;
+    cursor:pointer;
+}
+
+.main__endpoint-constructor-button:hover{
+    background-color:#29adea;
+}
