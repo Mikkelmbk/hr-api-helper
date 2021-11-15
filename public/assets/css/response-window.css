@@ -15,23 +15,23 @@
 
 .main__endpoint-test-response-window-description{
     user-select:none;
-    background-color:black;
-    color:white;
+    background-color:var(--primary-theme-endpoint-label-bg);
+    color:var(--primary-theme-text-color);
     padding:2px 8px;
-    border-radius:4px;
-    font-size:14px;
+    border-radius:var(--primary-theme-border-radius);
+    font-size:var(--primary-theme-font-size);
     margin-right:8px;
 }
 
 .main__endpoint-test-response-window{
     border:2px solid #333;
-    background-color:#666;
-    border-radius:4px;
+    background-color:var(--primary-theme-response-window-bg);
+    border-radius:var(--primary-theme-border-radius);
     padding:20px;
     height:100%;
 }
 
 .main__endpoint-test-response-output{
     color:white;
-    font-size:14px;
+    font-size:var(--primary-theme-font-size);
 }
