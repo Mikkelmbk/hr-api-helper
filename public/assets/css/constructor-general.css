@@ -12,24 +12,22 @@
 
 .main__endpoint-constructor-description{
     user-select:none;
-    background-color:black;
-    color:white;
+    background-color:var(--primary-theme-endpoint-label-bg);
+    color:var(--primary-theme-text-color);
     padding:2px 8px;
-    border-radius:4px;
-    font-size:14px;
+    border-radius:var(--primary-theme-border-radius);
+    font-size:var(--primary-theme-font-size);
     margin-right:8px;
 }
 
 .main__endpoint-constructor-outer-container{
     border:2px solid #777;
-    background-color:rgb(199, 199, 199);
-    border-radius:4px;
+    background-color:var(--primary-theme-endpoint-builder-bg);
+    border-radius:var(--primary-theme-border-radius);
     display:flex;
     flex-wrap:wrap;
     padding:20px;   
 }
-
-/* Experimental CSS starting */
 
 .main__endpoint-constructor-outer-recom-container,.main__endpoint-constructor-outer-search-container{
     margin-right:25px;
@@ -55,11 +53,11 @@
     top:-10px;
     left:15px;
     user-select:none;
-    background-color:black;
-    color:white;
+    background-color:var(--primary-theme-endpoint-label-bg);
+    color:var(--primary-theme-text-color);
     padding:2px 8px;
-    border-radius:4px;
-    font-size:14px;
+    border-radius:var(--primary-theme-border-radius);
+    font-size:var(--primary-theme-font-size);
     transition: var(--label-focus-transition);
 }
 
@@ -75,14 +73,15 @@
 
 .main__endpoint-constructor-button{
     height:35px;
-    width:120px;
+    width:125px;
     background-color:#298eea;
-    color:white;
+    color:var(--primary-theme-text-color);
     border:none;
-    border-radius:3px;
+    border-radius:var(--primary-theme-border-radius);
     padding:4px;
     margin-left:2px;
     cursor:pointer;
+    font-size:var(--primary-theme-font-size);
 }
 
 .main__endpoint-constructor-button:hover{
