@@ -19,6 +19,10 @@ body{
     background-color: #099633!important;
 }
 
+.failure-red-text-color{
+    color:red!important;
+}
+
 .hidden{
     display:none!important;
 }
