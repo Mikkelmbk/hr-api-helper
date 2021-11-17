@@ -2,14 +2,14 @@ let constructorData = [
     {
         identifier: "url",
         labelText: "Context url (Optional)",
-        placeholderText: "",
+        placeholderText: "https://www.lomax.dk/rengoering/vaernemidler/engangshandsker/engangshandsker-hdpe-plast-one-size-100-stk-60090860/",
         constructor: "recom",
         param: "url",
     },
     {
         identifier: "tracking-user-id",
         labelText: "Tracking user id (Optional)",
-        placeholderText: "",
+        placeholderText: "a95g845103y4tk45g19he10",
         constructor: "recom",
         param:"trackingUserId"
     },
@@ -51,14 +51,14 @@ let constructorData = [
     {
         identifier: "query",
         labelText: "Search Query (Required)",
-        placeholderText: "",
+        placeholderText: "Syver stolen",
         constructor: "search",
         param: "q",
     },
     {
         identifier: "search-key-id",
         labelText: "Search key Id (Required)",
-        placeholderText: "",
+        placeholderText: "a95g845103y4tk45g19he10",
         constructor: "search",
         param: "key",
     },
