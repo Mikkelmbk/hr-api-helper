@@ -9,17 +9,11 @@ mainEndpointConstructorContainers.forEach((item) => {
     let label = item.querySelector(".main__endpoint-constructor-label");
 
 
-    if (btn.dataset.param === "ids") {
-        btn.addEventListener("click", () => {
-            
-            if(!validateNumbers(input.value)) return;
-            addToEndpoint(input.value);
-        });
-    }
-    else if (btn.dataset.param === "hierarchies") {
+    if (btn.dataset.param === "hierarchies") {
         btn.addEventListener("click", () => {
 
-            if(!validateNumbers(reqProductBoxIdInputElem.value)) return;
+            if(!validateRequired(reqProductBoxIdInputElem.value)) return;
+            if(!validateRequired(input.value)) return;
 
             let hierarchyIndexOne = 0;
             let preText = `&crawledData[${reqProductBoxIdInputElem.value}][${btn.dataset.param}][${hierarchyIndexOne}][]=${input.value}`;
@@ -28,30 +22,32 @@ mainEndpointConstructorContainers.forEach((item) => {
     }
     else if (btn.dataset.param === "crawledData") {
         btn.addEventListener("click", () => {
+            if(!validateRequired(input.value)) return;
             let preText = `&crawledData[${reqProductBoxIdInputElem.value}][${input.value}]=${input.value}`;
             addToEndpoint(preText);
         })
     }
     else {
         btn.addEventListener("click", () => {
+            if(!validateRequired(input.value)) return;
             addToEndpoint(`&${input.dataset.param}=${input.value}`);
         });
     }
 
-})
+});
 
 
 function addToEndpoint(addition) {
     outputElem.innerHTML += addition;
-}
+};
 
 
-function validateNumbers(input) {
-    if (isNaN(input) || input == "") {
+function validateRequired(input) {
+    if (input == "") {
         return false;
     }
     return true;
-}
+};
 
 
 
