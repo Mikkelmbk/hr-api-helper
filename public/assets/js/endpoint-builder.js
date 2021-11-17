@@ -1,27 +1,61 @@
-// let endpointBuilderRecomUrlInputElem = document.querySelector(".main__endpoint-constructor-input.url.recom");
-// let endpointBuilderRecomUrlButtonElem = document.querySelector(".main__endpoint-constructor-button.url.recom");
-// endpointBuilderRecomUrlButtonElem.addEventListener("click",()=>{
-//     console.log(endpointBuilderRecomUrlInputElem.value);
-//     // outputElem.innerHTML += `&url=${endpointBuilderRecomUrlInputElem.value}`;
-//     addToEndpoint(`&url=${endpointBuilderRecomUrlInputElem.value}`);
-// });
-
-
 let mainEndpointConstructorContainers = document.querySelectorAll(".main__endpoint-constructor-container");
+let reqProductBoxIdInputElem = document.querySelector("input[data-param='ids']");
+let reqProductBoxIdLabelElem = document.querySelector("label[data-param='ids']");
 
 
 mainEndpointConstructorContainers.forEach((item) => {
-    if(item.classList.contains("recom")){
-        item.querySelector(".main__endpoint-constructor-button").addEventListener("click",()=>{
-            addToEndpoint(`${item.querySelector(".main__endpoint-constructor-input").value}`);
-            // Add the identifier as a dataset instead of a class so that the dataset can be utilized here as parameter name for the endpoint. Change all identifiers to be camelCase instead of dashed to reflect the expected parameter names.
+    let btn = item.querySelector(".main__endpoint-constructor-button");
+    let input = item.querySelector(".main__endpoint-constructor-input");
+    let label = item.querySelector(".main__endpoint-constructor-label");
+
+
+    if (btn.dataset.param === "ids") {
+        btn.addEventListener("click", () => {
+            
+            if(!validateNumbers(input.value)) return;
+            addToEndpoint(input.value);
+        });
+    }
+    else if (btn.dataset.param === "hierarchies") {
+        btn.addEventListener("click", () => {
+
+            if(!validateNumbers(reqProductBoxIdInputElem.value)) return;
+
+            let hierarchyIndexOne = 0;
+            let preText = `&crawledData[${reqProductBoxIdInputElem.value}][${btn.dataset.param}][${hierarchyIndexOne}][]=${input.value}`;
+            addToEndpoint(preText);
+        });
+    }
+    else if (btn.dataset.param === "crawledData") {
+        btn.addEventListener("click", () => {
+            let preText = `&crawledData[${reqProductBoxIdInputElem.value}][${input.value}]=${input.value}`;
+            addToEndpoint(preText);
         })
     }
-    else if(item.classList.contains("search")){
+    else {
+        btn.addEventListener("click", () => {
+            addToEndpoint(`&${input.dataset.param}=${input.value}`);
+        });
     }
+
 })
 
 
-function addToEndpoint(addition){
+function addToEndpoint(addition) {
     outputElem.innerHTML += addition;
 }
+
+
+function validateNumbers(input) {
+    if (isNaN(input) || input == "") {
+        return false;
+    }
+    return true;
+}
+
+
+
+
+
+
+
