@@ -13,6 +13,7 @@ mainEndpointConstructorContainers.forEach((item) => {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNotEmpty(reqProductBoxIdInputElem.value, reqProductBoxIdLabelElem)) return;
+            if(!validateNoSpecialCharacters(reqProductBoxIdInputElem.value,reqProductBoxIdLabelElem)) return;
             let hierarchyIndexOne = 0;
             let preText = `&crawledData[${removeWhitespace(reqProductBoxIdInputElem.value)}][${btn.dataset.param}][${hierarchyIndexOne}][]=${removeWhitespace(input.value)}`;
             addToEndpoint(preText);
@@ -79,7 +80,7 @@ function addToEndpoint(addition) {
 };
 
 function removeWhitespace(input){
-    return input.replace(/\s/g,"");
+    return input.replace(/\s/g,"\\ ");
 }
 
 function validateNotEmpty(input, label) {
@@ -102,7 +103,6 @@ function validateEqualSign(input, label) {
     return true;
 };
 function validateColonSign(input, label) {
-    // if (!input.match(/^[A-z]*:[A-z0-9,0-9]+$/g)) {
     if (!input.match(/^[A-z]*:[A-z0-9]+(,[0-9]+|$)/g)) {
         console.log("Missing colon sign");
         label.classList.add("failure-red-text-color");
@@ -122,12 +122,12 @@ function validateNumbers(input, label){
     return true;
 }
 
-
-
-
-
-
-
-
-
-
+function validateNoSpecialCharacters(input,label){
+    if(!input.match(/^[A-z0-9]+$/g) && !input.match(/^[A-z0-9]+,[A-z0-9]+$/)){
+        console.log("Special characters present");
+        label.classList.add("failure-red-text-color");
+        return false;
+    }
+    label.classList.remove("failure-red-text-color");
+    return true;
+}
