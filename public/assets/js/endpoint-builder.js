@@ -120,69 +120,69 @@ function removeWhitespace(input){
 function validateNotEmpty(input, label) {
     if (input == "") {
         console.log("empty input");
-        label.classList.add("failure-red-text-color");
+        label.classList.add("failure-red-background");
         return false;
     }
-    label.classList.remove("failure-red-text-color");
+    label.classList.remove("failure-red-background");
     return true;
 };
 
 function validateEqualSign(input, label) {
     if (!input.match(/^[A-z]*=[A-z0-9]+$/g)) {
         console.log("Missing equal sign");
-        label.classList.add("failure-red-text-color");
+        label.classList.add("failure-red-background");
         return false;
     }
-    label.classList.remove("failure-red-text-color");
+    label.classList.remove("failure-red-background");
     return true;
 };
 function validateColonSign(input, label) {
     if (!input.match(/^[A-z]*:[A-z0-9]+(,[0-9]+|$)/g)) {
         console.log("Missing colon sign");
-        label.classList.add("failure-red-text-color");
+        label.classList.add("failure-red-background");
         return false;
     }
-    label.classList.remove("failure-red-text-color");
+    label.classList.remove("failure-red-background");
     return true;
 };
 
 function validateNumbers(input, label){
     if (isNaN(input)) {
         console.log("Must be a number");
-        label.classList.add("failure-red-text-color");
+        label.classList.add("failure-red-background");
         return false;
     }
-    label.classList.remove("failure-red-text-color");
+    label.classList.remove("failure-red-background");
     return true;
 }
 
 function validateRecommendationBoxKey(input,label){
     if(!input.match(/^[A-z0-9]+$/g) && !input.match(/^[A-z0-9]+,[A-z0-9]+$/)){
         console.log("Incorrect formatting");
-        label.classList.add("failure-red-text-color");
+        label.classList.add("failure-red-background");
         return false;
     }
-    label.classList.remove("failure-red-text-color");
+    label.classList.remove("failure-red-background");
     return true;
 }
 
 function validateNoSpecialCharacters(input,label){
     if(!input.match(/^[A-z0-9]+$/)){
         console.log("Special characters present");
-        label.classList.add("failure-red-text-color");
+        label.classList.add("failure-red-background");
         return false;
     }
-    label.classList.remove("failure-red-text-color");
+    label.classList.remove("failure-red-background");
     return true;
 }
 
 function validateNoDuplicates(input,label){
     if(outputElem.textContent.includes(input.dataset.param)){
         console.log(`${input.dataset.param} already exists.`);
-        label.classList.add("failure-red-text-color");
+        label.classList.add("failure-red-background");
         return false;
     }
-    label.classList.remove("failure-red-text-color");
+    label.classList.remove("failure-red-background");
     return true;
 }
 

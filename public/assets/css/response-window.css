@@ -32,6 +32,7 @@
 }
 
 .main__endpoint-test-response-output{
-    color:white;
+    color:yellow;
+    font-family: monospace;
     font-size:var(--primary-theme-font-size);
 }
