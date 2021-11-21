@@ -28,6 +28,10 @@
     display:flex;
 }
 
+.main__endpoint-output{
+    font-family:monospace;
+}
+
 .main__endpoint-output-description{
     user-select:none;
     background-color:var(--primary-theme-endpoint-label-bg);
