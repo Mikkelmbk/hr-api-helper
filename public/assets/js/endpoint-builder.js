@@ -9,13 +9,30 @@ mainEndpointConstructorContainers.forEach((item) => {
     let label = item.querySelector(".main__endpoint-constructor-label");
 
     // Recommendation events.
-    if (btn.dataset.param === "hierarchies") {
+    if (btn.dataset.param === "trackingUserId") {
+        btn.addEventListener("click", () => {
+            if(!validateNotEmpty(input.value, label)) return;
+            if(!validateNoSpecialCharacters(input.value,label)) return;
+            registerFeedback(btn);
+            addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`);
+        })
+    }
+    else if (btn.dataset.param === "ids") {
+        btn.addEventListener("click", () => {
+            if(!validateNotEmpty(input.value, label)) return;
+            if(!validateRecommendationBoxKey(input.value,label)) return;
+            registerFeedback(btn);
+            addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`);
+        })
+    }
+    else if (btn.dataset.param === "hierarchies") {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNotEmpty(reqProductBoxIdInputElem.value, reqProductBoxIdLabelElem)) return;
-            if(!validateNoSpecialCharacters(reqProductBoxIdInputElem.value,reqProductBoxIdLabelElem)) return;
+            if(!validateRecommendationBoxKey(reqProductBoxIdInputElem.value,reqProductBoxIdLabelElem)) return;
             let hierarchyIndexOne = 0;
-            let preText = `&crawledData[${removeWhitespace(reqProductBoxIdInputElem.value)}][${btn.dataset.param}][${hierarchyIndexOne}][]=${removeWhitespace(input.value)}`;
+            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(reqProductBoxIdInputElem.value, 0))}][${btn.dataset.param}][${hierarchyIndexOne}][]=${removeWhitespace(input.value)}`;
+            registerFeedback(btn);
             addToEndpoint(preText);
         });
     }
@@ -26,7 +43,8 @@ mainEndpointConstructorContainers.forEach((item) => {
             if(!validateNotEmpty(reqProductBoxIdInputElem.value, reqProductBoxIdLabelElem)) return;
             let formattedValue = input.value.split("=");
             console.log(formattedValue);
-            let preText = `&crawledData[${removeWhitespace(reqProductBoxIdInputElem.value)}][${removeWhitespace(formattedValue.shift())}]=${removeWhitespace(formattedValue.pop())}`;
+            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(reqProductBoxIdInputElem.value, 0))}][${removeWhitespace(formattedValue.shift())}]=${removeWhitespace(formattedValue.pop())}`;
+            registerFeedback(btn);
             addToEndpoint(preText);
         })
     }
@@ -36,7 +54,8 @@ mainEndpointConstructorContainers.forEach((item) => {
             if(!validateEqualSign(input.value, label)) return;
             if(!validateNotEmpty(reqProductBoxIdInputElem.value, reqProductBoxIdLabelElem)) return;
             let formattedValue = input.value.split("=");
-            let preText = `&crawledData[${removeWhitespace(reqProductBoxIdInputElem.value)}][extraData][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
+            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(reqProductBoxIdInputElem.value, 0))}][extraData][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
+            registerFeedback(btn);
             addToEndpoint(preText);
         })
     }
@@ -46,7 +65,8 @@ mainEndpointConstructorContainers.forEach((item) => {
             if(!validateEqualSign(input.value, label)) return;
             if(!validateNotEmpty(reqProductBoxIdInputElem.value, reqProductBoxIdLabelElem)) return;
             let formattedValue = input.value.split("=");
-            let preText = `&crawledData[${removeWhitespace(reqProductBoxIdInputElem.value)}][extraDataList][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
+            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(reqProductBoxIdInputElem.value, 0))}][extraDataList][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
+            registerFeedback(btn);
             addToEndpoint(preText);
         })
     }
@@ -55,6 +75,7 @@ mainEndpointConstructorContainers.forEach((item) => {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNumbers(input.value, label)) return;
+            registerFeedback(btn);
             addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`);
         });
     }
@@ -62,12 +83,14 @@ mainEndpointConstructorContainers.forEach((item) => {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateColonSign(input.value, label)) return;
+            registerFeedback(btn);
             addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`);
         });
     }
     else {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
+            registerFeedback(btn);
             addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`);
         });
     }
@@ -122,12 +145,41 @@ function validateNumbers(input, label){
     return true;
 }
 
-function validateNoSpecialCharacters(input,label){
+function validateRecommendationBoxKey(input,label){
     if(!input.match(/^[A-z0-9]+$/g) && !input.match(/^[A-z0-9]+,[A-z0-9]+$/)){
+        console.log("Incorrect formatting");
+        label.classList.add("failure-red-text-color");
+        return false;
+    }
+    label.classList.remove("failure-red-text-color");
+    return true;
+}
+
+function validateNoSpecialCharacters(input,label){
+    if(!input.match(/^[A-z0-9]+$/)){
         console.log("Special characters present");
         label.classList.add("failure-red-text-color");
         return false;
     }
     label.classList.remove("failure-red-text-color");
     return true;
+}
+
+function recommendationBoxKeyPicker(ids, picked){
+    let splitIds = ids.split(",");
+    if(splitIds[picked] != "undefined"){
+        return splitIds[picked];
+    }
+    else{
+        return splitIds[0];
+    }
+}
+
+function registerFeedback(button){
+    button.disabled = true;
+    button.classList.add("success-green-background");
+    setTimeout(()=>{
+        button.classList.remove("success-green-background");
+        button.disabled = false;
+    },1000);
 }
