@@ -13,6 +13,7 @@ mainEndpointConstructorContainers.forEach((item) => {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNoSpecialCharacters(input.value,label)) return;
+            if(!validateNoDuplicates(input, label)) return;
             registerFeedback(btn);
             addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`);
         })
@@ -21,6 +22,7 @@ mainEndpointConstructorContainers.forEach((item) => {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateRecommendationBoxKey(input.value,label)) return;
+            if(!validateNoDuplicates(input, label)) return;
             registerFeedback(btn);
             addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`);
         })
@@ -75,6 +77,7 @@ mainEndpointConstructorContainers.forEach((item) => {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNumbers(input.value, label)) return;
+            if(!validateNoDuplicates(input, label)) return;
             registerFeedback(btn);
             addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`);
         });
@@ -90,6 +93,7 @@ mainEndpointConstructorContainers.forEach((item) => {
     else {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
+            if(!validateNoDuplicates(input, label)) return;
             registerFeedback(btn);
             addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`);
         });
@@ -99,7 +103,14 @@ mainEndpointConstructorContainers.forEach((item) => {
 
 
 function addToEndpoint(addition) {
-    outputElem.innerHTML += addition;
+    let endpointIdentifier = document.createElement('span');
+    endpointIdentifier.classList.add("main__endpoint-output");
+    endpointIdentifier.classList.add("main__endpoint-output--addition");
+    endpointIdentifier.innerHTML = addition;
+    outputElem.appendChild(endpointIdentifier);
+    endpointIdentifier.addEventListener("click",(e)=>{
+        endpointIdentifier.remove();
+    });
 };
 
 function removeWhitespace(input){
@@ -158,6 +169,16 @@ function validateRecommendationBoxKey(input,label){
 function validateNoSpecialCharacters(input,label){
     if(!input.match(/^[A-z0-9]+$/)){
         console.log("Special characters present");
+        label.classList.add("failure-red-text-color");
+        return false;
+    }
+    label.classList.remove("failure-red-text-color");
+    return true;
+}
+
+function validateNoDuplicates(input,label){
+    if(outputElem.textContent.includes(input.dataset.param)){
+        console.log(`${input.dataset.param} already exists.`);
         label.classList.add("failure-red-text-color");
         return false;
     }
