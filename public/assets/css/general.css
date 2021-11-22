@@ -19,8 +19,12 @@ body{
     background-color: #099633!important;
 }
 
-.failure-red-text-color{
-    color:red!important;
+.awaiting-orange-background-color{
+    background-color:rgb(255, 115, 0)!important;
+}
+
+.failure-red-background{
+    background-color:red!important;
 }
 
 .hidden{

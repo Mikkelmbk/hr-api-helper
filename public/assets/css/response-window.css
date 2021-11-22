@@ -32,6 +32,22 @@
 }
 
 .main__endpoint-test-response-output{
-    color:white;
+    color:yellow;
+    font-family: monospace;
     font-size:var(--primary-theme-font-size);
+}
+
+.main__endpoint-test-response-output p,.main__endpoint-test-response-output a{
+    /* color:yellow; */
+    font-family: monospace;
+    word-break:break-word;
+    font-size:var(--primary-theme-font-size);
+}
+
+.main__endpoint-test-response-output a{
+    color: lightblue;
+}
+
+.response-product-container{
+    margin: 30px 0;
 }

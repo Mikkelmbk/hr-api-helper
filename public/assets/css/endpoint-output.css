@@ -32,6 +32,15 @@
     font-family:monospace;
 }
 
+.main__endpoint-output--addition{
+    color:darkgreen;
+    cursor:pointer;
+}
+
+.main__endpoint-output--addition:hover{
+    color:red;
+}
+
 .main__endpoint-output-description{
     user-select:none;
     background-color:var(--primary-theme-endpoint-label-bg);
