@@ -74,7 +74,7 @@ let constructorData = [
     {
         identifier: "product-count",
         labelText: "Product count (Optional)",
-        placeholderText: "Example: 10",
+        placeholderText: "Example: 15 (Default is 10)",
         constructor: "search",
         param: "product_count",
         description: "A parameter which will tell our system how many products it should find."
