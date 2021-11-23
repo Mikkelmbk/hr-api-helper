@@ -114,7 +114,7 @@ function addToEndpoint(addition) {
 };
 
 function removeWhitespace(input){
-    return input.replace(/\s/g,"\\ ");
+    return input.replace(/\s/g,"%20");
 }
 
 function validateNotEmpty(input, label) {
