@@ -11,4 +11,8 @@ If you have a remote branch with no equivalent local branch, you can make a loca
 
 
 Notes for future tabs in the hr-api-helper.
-how to find data stored for tracking user: https://addwish.com/api/v1/tracking/bias?websiteUuid=websiteUuid-indsættes-her&hello_retail_id=trackingUserId-indsættes-her
+how to find data stored for tracking user: https://addwish.com/api/v1/tracking/bias?websiteUuid=websiteUuid-indsættes-her&hello_retail_id=trackingUserId-indsættes-herFeedback from beta testing:
+
+feedback provided:
+- The current iteration of escaping spaces are wrong, this needs to be looked at. (space = %20 | & = %26)
+- CrawledData fields does not currently accept space values, adjust validation for these.
