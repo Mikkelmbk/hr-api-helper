@@ -5,28 +5,35 @@
 
 .main__endpoint-constructor-border-position{
     position:absolute;
-    top:-9px;
-    left:12px;
+    top: -16px;
+    left:20px;
     display:flex;
+    z-index: 10;
 }
 
 .main__endpoint-constructor-description{
     user-select:none;
-    background-color:var(--primary-theme-endpoint-label-bg);
     color:var(--primary-theme-text-color);
-    padding:2px 8px;
+    padding:8px 16px;
     border-radius:var(--primary-theme-border-radius);
     font-size:var(--primary-theme-font-size);
     margin-right:8px;
+    background: rgba( 255, 255, 255, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur( 5px );  
 }
 
 .main__endpoint-constructor-outer-container{
     border:2px solid #777;
-    background-color:var(--primary-theme-endpoint-builder-bg);
     border-radius:var(--primary-theme-border-radius);
     display:flex;
     flex-wrap:wrap;
-    padding:20px;   
+    padding:20px; 
+    background: rgba( 255, 255, 255, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur( 5px );  
 }
 
 .main__endpoint-constructor-outer-recom-container,.main__endpoint-constructor-outer-search-container{
@@ -50,37 +57,42 @@
 
 .main__endpoint-constructor-label{
     position:absolute;
-    top:-10px;
-    left:15px;
+    top:-20px;
+    left:2px;
     user-select:none;
-    background-color:var(--primary-theme-endpoint-label-bg);
     color:var(--primary-theme-text-color);
     padding:2px 8px;
-    border-radius:var(--primary-theme-border-radius);
+    border-radius: 5px 5px 0 0;
     font-size:var(--primary-theme-font-size);
     transition: var(--label-focus-transition);
+    background: rgba( 255, 255, 255, 0.1 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur( 5px );  
 }
 
 .main__endpoint-constructor-input{
+    border: 2px solid #165093;
+    outline: none;
     border-radius:3px;
     height:35px;
     padding-left:5px;
 }
 
 .main__endpoint-constructor-input:focus + .main__endpoint-constructor-label{
-    opacity:0;
-    pointer-events:none;
+    background: #165093;
 }
+
 
 .main__endpoint-constructor-button{
     height:35px;
     width:125px;
-    background-color:#298eea;
+    background-color:#165093;
     color:var(--primary-theme-text-color);
     border:none;
-    border-radius:var(--primary-theme-border-radius);
+    border-radius:0 20px 20px 0;
     padding:4px;
-    margin-left:2px;
+    margin-left:-1px;
     cursor:pointer;
     font-size:var(--primary-theme-font-size);
 }

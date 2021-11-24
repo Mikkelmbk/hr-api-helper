@@ -34,7 +34,7 @@
 }
 
 .main__endpoint-output{
-    font-family:monospace;
+    font-family:'Fira Mono', monospace;
 }
 
 .main__endpoint-output--addition{
