@@ -5,18 +5,18 @@ window.addEventListener('hashchange',(e)=>{
 });
 
 function constructorDisplay(activeTab){
-    outerRecomContainerElem.classList.add("hidden");
-    outerSearchContainerElem.classList.add("hidden");
+    mainEndpointConstructorOuterRecomContainerElem.classList.add("hidden");
+    mainEndpointConstructorOuterSearchContainerElem.classList.add("hidden");
     activeTab = activeTab.split("#").pop();
     if(activeTab === "recommendation-rest-endpoint" || activeTab === ""){
-        outerRecomContainerElem.classList.remove("hidden");
-        outputElem.innerHTML = "https://www.addwish.com/api/v1/product-recommendation/getProductBoxes?format=json";
-        endpointConstructorDescriptionElem.innerHTML = "Recommendation REST Endpoint";
+        mainEndpointConstructorOuterRecomContainerElem.classList.remove("hidden");
+        mainEndpointOutputElem.innerHTML = "https://www.addwish.com/api/v1/product-recommendation/getProductBoxes?format=json";
+        mainEndpointConstructorDescriptionElem.innerHTML = "Recommendation REST Endpoint";
 
     }
     else if(activeTab === "search-rest-endpoint"){
-        outerSearchContainerElem.classList.remove("hidden");
-        outputElem.innerHTML = "https://www.addwish.com/api/v1/search/partnerSearch?format=json";
-        endpointConstructorDescriptionElem.innerHTML = "Search REST Endpoint";
+        mainEndpointConstructorOuterSearchContainerElem.classList.remove("hidden");
+        mainEndpointOutputElem.innerHTML = "https://www.addwish.com/api/v1/search/partnerSearch?format=json";
+        mainEndpointConstructorDescriptionElem.innerHTML = "Search REST Endpoint";
     }
 }

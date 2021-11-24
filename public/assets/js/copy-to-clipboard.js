@@ -1,11 +1,11 @@
-copyToClipboardElem.addEventListener("click", () => {
-    navigator.clipboard.writeText(outputElem.textContent);
-    copyToClipboardElem.classList.add("success-green-background");
-    copyToClipboardElem.innerHTML = "Copied";
-    copyToClipboardElem.disabled = true;
+mainEndpointOutputClipboardCopyBtnElem.addEventListener("click", () => {
+    navigator.clipboard.writeText(mainEndpointOutputElem.textContent);
+    mainEndpointOutputClipboardCopyBtnElem.classList.add("success-green-background");
+    mainEndpointOutputClipboardCopyBtnElem.innerHTML = "Copied";
+    mainEndpointOutputClipboardCopyBtnElem.disabled = true;
     setTimeout(() => {
-        copyToClipboardElem.classList.remove("success-green-background");
-        copyToClipboardElem.innerHTML = "Copy to Clipboard";
-        copyToClipboardElem.disabled = false;
+        mainEndpointOutputClipboardCopyBtnElem.classList.remove("success-green-background");
+        mainEndpointOutputClipboardCopyBtnElem.innerHTML = "Copy to Clipboard";
+        mainEndpointOutputClipboardCopyBtnElem.disabled = false;
     }, 2000);
 });

@@ -127,10 +127,10 @@ constructorData.forEach((data) => {
 
     constructorInputElem.placeholder = data.placeholderText;
     if(data.constructor === "recom"){
-        outerRecomContainerElem.appendChild(constructorContainerElem);
+        mainEndpointConstructorOuterRecomContainerElem.appendChild(constructorContainerElem);
     }
     else if(data.constructor === "search"){
-        outerSearchContainerElem.appendChild(constructorContainerElem);
+        mainEndpointConstructorOuterSearchContainerElem.appendChild(constructorContainerElem);
     }
     constructorContainerElem.appendChild(structureDivElem);
     structureDivElem.appendChild(constructorInputElem);

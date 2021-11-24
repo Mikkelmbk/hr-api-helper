@@ -1,9 +1,9 @@
-let mainEndpointConstructorContainers = document.querySelectorAll(".main__endpoint-constructor-container");
-let reqProductBoxIdInputElem = document.querySelector("input[data-param='ids']");
-let reqProductBoxIdLabelElem = document.querySelector("label[data-param='ids']");
+let mainEndpointConstructorContainerElems = document.querySelectorAll(".main__endpoint-constructor-container");
+let mainEndpointConstructorInputProductBoxIdRecomElem = document.querySelector("input[data-param='ids']");
+let mainEndpointConstructorLabelProductBoxIdRecomElem = document.querySelector("label[data-param='ids']");
 
 
-mainEndpointConstructorContainers.forEach((item) => {
+mainEndpointConstructorContainerElems.forEach((item) => {
     let btn = item.querySelector(".main__endpoint-constructor-button");
     let input = item.querySelector(".main__endpoint-constructor-input");
     let label = item.querySelector(".main__endpoint-constructor-label");
@@ -30,10 +30,10 @@ mainEndpointConstructorContainers.forEach((item) => {
     else if (btn.dataset.param === "hierarchies") {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
-            if(!validateNotEmpty(reqProductBoxIdInputElem.value, reqProductBoxIdLabelElem)) return;
-            if(!validateRecommendationBoxKey(reqProductBoxIdInputElem.value,reqProductBoxIdLabelElem)) return;
+            if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
+            if(!validateRecommendationBoxKey(mainEndpointConstructorInputProductBoxIdRecomElem.value,mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let hierarchyIndexOne = 0;
-            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(reqProductBoxIdInputElem.value, 0))}][${btn.dataset.param}][${hierarchyIndexOne}][]=${removeWhitespace(input.value)}`;
+            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${btn.dataset.param}][${hierarchyIndexOne}][]=${removeWhitespace(input.value)}`;
             registerFeedback(btn);
             addToEndpoint(preText);
         });
@@ -42,10 +42,10 @@ mainEndpointConstructorContainers.forEach((item) => {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateEqualSign(input.value, label)) return;
-            if(!validateNotEmpty(reqProductBoxIdInputElem.value, reqProductBoxIdLabelElem)) return;
+            if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
             console.log(formattedValue);
-            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(reqProductBoxIdInputElem.value, 0))}][${removeWhitespace(formattedValue.shift())}]=${removeWhitespace(formattedValue.pop())}`;
+            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${removeWhitespace(formattedValue.shift())}]=${removeWhitespace(formattedValue.pop())}`;
             registerFeedback(btn);
             addToEndpoint(preText);
         })
@@ -54,9 +54,9 @@ mainEndpointConstructorContainers.forEach((item) => {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateEqualSign(input.value, label)) return;
-            if(!validateNotEmpty(reqProductBoxIdInputElem.value, reqProductBoxIdLabelElem)) return;
+            if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
-            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(reqProductBoxIdInputElem.value, 0))}][extraData][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
+            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraData][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
             registerFeedback(btn);
             addToEndpoint(preText);
         })
@@ -65,9 +65,9 @@ mainEndpointConstructorContainers.forEach((item) => {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateEqualSign(input.value, label)) return;
-            if(!validateNotEmpty(reqProductBoxIdInputElem.value, reqProductBoxIdLabelElem)) return;
+            if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
-            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(reqProductBoxIdInputElem.value, 0))}][extraDataList][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
+            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraDataList][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
             registerFeedback(btn);
             addToEndpoint(preText);
         })
@@ -107,7 +107,7 @@ function addToEndpoint(addition) {
     endpointIdentifier.classList.add("main__endpoint-output");
     endpointIdentifier.classList.add("main__endpoint-output--addition");
     endpointIdentifier.innerHTML = addition;
-    outputElem.appendChild(endpointIdentifier);
+    mainEndpointOutputElem.appendChild(endpointIdentifier);
     endpointIdentifier.addEventListener("click",(e)=>{
         endpointIdentifier.remove();
     });
@@ -177,7 +177,7 @@ function validateNoSpecialCharacters(input,label){
 }
 
 function validateNoDuplicates(input,label){
-    if(outputElem.textContent.includes(input.dataset.param)){
+    if(mainEndpointOutputElem.textContent.includes(input.dataset.param)){
         console.log(`${input.dataset.param} already exists.`);
         label.classList.add("failure-red-background");
         return false;
