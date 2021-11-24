@@ -3,10 +3,10 @@
     --label-focus-transition: opacity 0.2s ease;
     --primary-theme-header-bg: rgba(243,245,246,1.00);
     --primary-theme-main-bg: white;
-    --primary-theme-endpoint-builder-bg: rgb(199, 199, 199);
-    --primary-theme-endpoint-label-bg: black;
+    --primary-theme-endpoint-builder-bg: rgb(255, 255, 255);
+    --primary-theme-endpoint-label-bg: #fff;
     --primary-theme-response-window-bg: #666;
     --primary-theme-text-color: white;
     --primary-theme-font-size: 14px;
-    --primary-theme-border-radius: 4px;
+    --primary-theme-border-radius: 20px;
 }

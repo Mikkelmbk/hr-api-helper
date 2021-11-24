@@ -13,23 +13,28 @@
 
 .main__endpoint-output-inner-container{
     min-height:80px;
-    border:2px solid #777;
-    background-color:var(--primary-theme-endpoint-builder-bg);
+    border:1px solid rgba( 255, 255, 255, 0.5 );
     border-radius:var(--primary-theme-border-radius);
     display:flex;
     align-items:center;
     padding:8px 20px;
+    background: rgba( 255, 255, 255, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur( 5px );
 }
 
 .main__endpoint-output-border-position{
     position:absolute;
-    top:-9px;
-    left:12px;
+    top:-16px;
+    left:50%;
+    transform: translateX(-50%);
     display:flex;
+    z-index: 10;
 }
 
 .main__endpoint-output{
-    font-family:monospace;
+    font-family:'Fira Mono', monospace;
 }
 
 .main__endpoint-output--addition{
@@ -51,25 +56,44 @@
     margin-right:8px;
 }
 
-.main__endpoint-output-clipboard-copy{
-    cursor:pointer;
-    border:unset;
-    width:136px;
-    background-color:var(--primary-theme-endpoint-label-bg);
-    color:var(--primary-theme-text-color);
-    padding:2px 8px;
-    border-radius:var(--primary-theme-border-radius);
-    font-size:var(--primary-theme-font-size);
-    margin-right:8px;
-}
-
+.main__endpoint-output-clipboard-copy,
 .main__endpoint-output-test{
     cursor:pointer;
     border:unset;
-    width:109px;
+    width:200px;
     background-color:var(--primary-theme-endpoint-label-bg);
     color:var(--primary-theme-text-color);
-    padding:2px 8px;
+    padding:8px 8px;
     border-radius:var(--primary-theme-border-radius);
     font-size:var(--primary-theme-font-size);
+    margin-right:8px;
+    background: rgba( 255, 255, 255, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur( 5px );
+    transition: background-color 1s linear;
+    overflow: hidden;
+}
+.main__endpoint-output-clipboard-copy::after,
+.main__endpoint-output-test::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba( 255, 255, 255, 0.5 );
+    z-index: -1;
+    transition: transform 300ms ease-in;
+    border-radius: var(--primary-theme-border-radius);
+}
+.main__endpoint-output-clipboard-copy::after,
+.main__endpoint-output-test::after {
+    transform: scaleX(0);
+    transform-origin: right;
+}
+.main__endpoint-output-clipboard-copy:hover::after,
+.main__endpoint-output-test:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }

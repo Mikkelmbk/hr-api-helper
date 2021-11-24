@@ -9,14 +9,14 @@
 }
 
 body{
-    background-color:white;
+    background: linear-gradient(20deg,#e0477c,#165093);
     min-height:100vh;
     display:flex;
     flex-direction:column;
 }
 
 .success-green-background{
-    background-color: #099633!important;
+    background-color: #e0477c!important;
 }
 
 .awaiting-orange-background-color{
