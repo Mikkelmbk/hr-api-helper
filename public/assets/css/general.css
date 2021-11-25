@@ -16,6 +16,10 @@ body{
 }
 
 .success-green-background{
+    background-color: green!important;
+}
+
+.btn-hover-background{
     background-color: #e0477c!important;
 }
 

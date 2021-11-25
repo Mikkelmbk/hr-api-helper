@@ -1,6 +1,6 @@
-let mainEndpointOutputTestBtnElem = document.querySelector(".main__endpoint-output-test");
-let mainEndpointOutputResponseWindowElem = document.querySelector(".main__endpoint-test-response-window-description");
-let mainEndpointOutputResponseElem = document.querySelector(".main__endpoint-test-response-output");
+// let mainEndpointOutputTestBtnElem = document.querySelector(".main__endpoint-output-test");
+// let mainEndpointOutputResponseWindowElem = document.querySelector(".main__endpoint-test-response-window-description");
+// let mainEndpointOutputResponseElem = document.querySelector(".main__endpoint-test-response-output");
 
 mainEndpointOutputTestBtnElem.addEventListener("click", () => {
     mainEndpointOutputTestBtnElem.disabled = true;
