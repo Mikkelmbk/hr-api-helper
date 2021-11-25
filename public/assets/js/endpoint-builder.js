@@ -14,7 +14,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNoSpecialCharacters(input.value,label)) return;
             if(!validateNoDuplicates(input, label)) return;
-            registerFeedback(btn);
+            buttonFeedback(btn, btn.textContent);
             addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`);
         })
     }
@@ -23,7 +23,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateRecommendationBoxKey(input.value,label)) return;
             if(!validateNoDuplicates(input, label)) return;
-            registerFeedback(btn);
+            buttonFeedback(btn, btn.textContent);
             addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`);
         })
     }
@@ -34,7 +34,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateRecommendationBoxKey(mainEndpointConstructorInputProductBoxIdRecomElem.value,mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let hierarchyIndexOne = 0;
             let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${btn.dataset.param}][${hierarchyIndexOne}][]=${removeWhitespace(input.value)}`;
-            registerFeedback(btn);
+            buttonFeedback(btn, btn.textContent);
             addToEndpoint(preText);
         });
     }
@@ -46,7 +46,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             let formattedValue = input.value.split("=");
             console.log(formattedValue);
             let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${removeWhitespace(formattedValue.shift())}]=${removeWhitespace(formattedValue.pop())}`;
-            registerFeedback(btn);
+            buttonFeedback(btn, btn.textContent);
             addToEndpoint(preText);
         })
     }
@@ -57,7 +57,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
             let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraData][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
-            registerFeedback(btn);
+            buttonFeedback(btn, btn.textContent);
             addToEndpoint(preText);
         })
     }
@@ -68,7 +68,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
             let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraDataList][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
-            registerFeedback(btn);
+            buttonFeedback(btn, btn.textContent);
             addToEndpoint(preText);
         })
     }
@@ -78,7 +78,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNumbers(input.value, label)) return;
             if(!validateNoDuplicates(input, label)) return;
-            registerFeedback(btn);
+            buttonFeedback(btn, btn.textContent);
             addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`);
         });
     }
@@ -86,7 +86,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateColonSign(input.value, label)) return;
-            registerFeedback(btn);
+            buttonFeedback(btn, btn.textContent);
             addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`);
         });
     }
@@ -94,7 +94,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNoDuplicates(input, label)) return;
-            registerFeedback(btn);
+            buttonFeedback(btn, btn.textContent);
             addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`);
         });
     }
@@ -194,13 +194,4 @@ function recommendationBoxKeyPicker(ids, picked){
     else{
         return splitIds[0];
     }
-}
-
-function registerFeedback(button){
-    button.disabled = true;
-    button.classList.add("success-green-background");
-    setTimeout(()=>{
-        button.classList.remove("success-green-background");
-        button.disabled = false;
-    },1000);
 }
