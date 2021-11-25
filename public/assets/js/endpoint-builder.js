@@ -128,7 +128,7 @@ function validateNotEmpty(input, label) {
 };
 
 function validateEqualSign(input, label) {
-    if (!input.match(/^[A-z]*=[A-z0-9]+$/g)) {
+    if (!input.match(/^[A-z]*=[A-z0-9\s]+$/g)) {
         console.log("Missing equal sign");
         label.classList.add("failure-red-background");
         return false;
@@ -137,7 +137,7 @@ function validateEqualSign(input, label) {
     return true;
 };
 function validateColonSign(input, label) {
-    if (!input.match(/^[A-z]*:[A-z0-9]+(,[0-9]+|$)/g)) {
+    if (!input.match(/^[A-z]*:[A-z0-9\s]+(,[0-9]+|$)/g)) {
         console.log("Missing colon sign");
         label.classList.add("failure-red-background");
         return false;
