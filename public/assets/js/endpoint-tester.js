@@ -1,10 +1,10 @@
-// let mainEndpointOutputTestBtnElem = document.querySelector(".main__endpoint-output-test");
-// let mainEndpointOutputResponseWindowElem = document.querySelector(".main__endpoint-test-response-window-description");
-// let mainEndpointOutputResponseElem = document.querySelector(".main__endpoint-test-response-output");
-
 mainEndpointOutputTestBtnElem.addEventListener("click", () => {
+    if(!mainEndpointOutputElem.querySelector(".ids") && !mainEndpointOutputElem.querySelector(".key")){
+        buttonFeedback(mainEndpointOutputTestBtnElem, "Missing required parameter",3000,false);
+        return;
+    }
+    buttonFeedback(mainEndpointOutputTestBtnElem, "Testing Endpoint",1500);
     mainEndpointOutputTestBtnElem.disabled = true;
-    mainEndpointOutputTestBtnElem.classList.add("awaiting-orange-background-color");
     mainEndpointOutputResponseWindowElem.classList.remove("failure-red-background");
     mainEndpointOutputResponseWindowElem.classList.remove("success-green-background");
     fetch(mainEndpointOutputElem.textContent)
@@ -18,7 +18,6 @@ mainEndpointOutputTestBtnElem.addEventListener("click", () => {
                 recomResponse = data.result[recomResponse];
                 if (recomResponse.error && recomResponse.errorCode) {
                     mainEndpointOutputResponseWindowElem.classList.add("failure-red-background");
-                    registerEndpointTest(mainEndpointOutputTestBtnElem);
                     return;
                 }
                 buildSimpleView(recomResponse);
@@ -26,17 +25,14 @@ mainEndpointOutputTestBtnElem.addEventListener("click", () => {
             else if(mainEndpointConstructorDescriptionElem.textContent.includes("Search")){
                 if(data.error && data.errorCode){
                     mainEndpointOutputResponseWindowElem.classList.add("failure-red-background");
-                    registerEndpointTest(mainEndpointOutputTestBtnElem);
                     return;
                 }
                 console.log(data);
                 buildSimpleView(data);
             }
-            registerEndpointTest(mainEndpointOutputTestBtnElem);
             mainEndpointOutputResponseWindowElem.classList.add("success-green-background");
         })
 });
-
 
 function registerEndpointTest(button) {
     button.classList.remove("awaiting-orange-background-color");

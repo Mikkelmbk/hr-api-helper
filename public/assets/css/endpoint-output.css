@@ -33,7 +33,7 @@
     z-index: 10;
 }
 
-.main__endpoint-output{
+.main__endpoint-output,.main__endpoint-output--addition{
     font-family:'Fira Mono', monospace;
 }
 
