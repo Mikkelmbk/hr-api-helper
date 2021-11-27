@@ -8,14 +8,17 @@ let mainEndpointOutputResponseWindowElem = document.querySelector(".main__endpoi
 let mainEndpointOutputResponseElem = document.querySelector(".main__endpoint-test-response-output"); // endpoint-tester.js
 
 
-function buttonFeedback(button, text){
-    let defaultText = button.textContent;
-    button.classList.add("success-green-background");
-    button.innerHTML = text;
+function buttonFeedback(button, text, time, status){
+    // if status is not provided or provided as true then show background color as green, otherwise show it as red.
     button.disabled = true;
+    let bgColor = status == undefined || status == true ? "success-green-background" : "failure-red-background";
+    let defaultText = button.textContent;
+    let timer = time || 1500;
+    button.classList.add(bgColor);
+    button.innerHTML = text;
     setTimeout(() => {
-        button.classList.remove("success-green-background");
-        button.innerHTML = defaultText;
         button.disabled = false;
-    }, 1500);
+        button.classList.remove(bgColor);
+        button.innerHTML = defaultText;
+    }, timer);
 }
