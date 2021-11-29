@@ -7,87 +7,101 @@ mainEndpointConstructorContainerElems.forEach((item) => {
     let btn = item.querySelector(".main__endpoint-constructor-button");
     let input = item.querySelector(".main__endpoint-constructor-input");
     let label = item.querySelector(".main__endpoint-constructor-label");
+    let identifier = btn.dataset.identifier;
+    let param = input.dataset.param;
 
     // Recommendation events.
-    if (btn.dataset.param === "trackingUserId") {
+    if (identifier === "tracking-user-id") {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNoSpecialCharacters(input.value,label)) return;
             if(!validateNoDuplicates(input, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`, input.dataset.param);
+            addToEndpoint(`&${param}=${removeWhitespace(input.value)}`, param);
         })
     }
-    else if (btn.dataset.param === "ids") {
+    else if (identifier === "product-box-id") {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateRecommendationBoxKey(input.value,label)) return;
             if(!validateNoDuplicates(input, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`, input.dataset.param);
+            addToEndpoint(`&${param}=${removeWhitespace(input.value)}`, param);
         })
     }
-    else if (btn.dataset.param === "hierarchies") {
+    else if (identifier === "hierarchy") {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             if(!validateRecommendationBoxKey(mainEndpointConstructorInputProductBoxIdRecomElem.value,mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let hierarchyIndexOne = 0;
-            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${btn.dataset.param}][${hierarchyIndexOne}][]=${removeWhitespace(input.value)}`;
+            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${param}][${hierarchyIndexOne}][]=${removeWhitespace(input.value)}`;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(preText, input.dataset.param);
+            addToEndpoint(preText, param);
         });
     }
-    else if (btn.dataset.param === "crawledData") {
+    else if (identifier === "crawledData") {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateEqualSign(input.value, label)) return;
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
             console.log(formattedValue);
-            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${removeWhitespace(formattedValue.shift())}]=${removeWhitespace(formattedValue.pop())}`;
+            let preText = `&${param}[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${removeWhitespace(formattedValue.shift())}]=${removeWhitespace(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(preText, input.dataset.param);
+            addToEndpoint(preText, param);
         })
     }
-    else if(btn.dataset.param === "extraData-crawledData"){
+    else if (identifier === "crawledData-list") {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateEqualSign(input.value, label)) return;
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
-            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraData][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
+            console.log(formattedValue);
+            let preText = `&${param}[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(preText, input.dataset.param);
+            addToEndpoint(preText, param);
         })
     }
-    else if(btn.dataset.param === "extraDataList-crawledData"){
+    else if(identifier === "extraData-crawledData"){
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateEqualSign(input.value, label)) return;
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
-            let preText = `&crawledData[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraDataList][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
+            let preText = `&${param}[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraData][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(preText, input.dataset.param);
+            addToEndpoint(preText, param);
+        })
+    }
+    else if(identifier === "extraDataList-crawledData"){
+        btn.addEventListener("click", () => {
+            if(!validateNotEmpty(input.value, label)) return;
+            if(!validateEqualSign(input.value, label)) return;
+            if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
+            let formattedValue = input.value.split("=");
+            let preText = `&${param}[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraDataList][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
+            buttonFeedback(btn, btn.textContent, 1000);
+            addToEndpoint(preText, param);
         })
     }
     // Search events.
-    else if(btn.dataset.param === "product_count" || btn.dataset.param === "product_start"){
+    else if(identifier === "product-count" || identifier === "product-start"){
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNumbers(input.value, label)) return;
             if(!validateNoDuplicates(input, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`, input.dataset.param);
+            addToEndpoint(`&${param}=${removeWhitespace(input.value)}`, param);
         });
     }
-    else if(btn.dataset.param === "filters[]"){
+    else if(identifier === "filters"){
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateColonSign(input.value, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`, input.dataset.param);
+            addToEndpoint(`&${param}=${removeWhitespace(input.value)}`, param);
         });
     }
     else {
@@ -95,7 +109,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNoDuplicates(input, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`&${input.dataset.param}=${removeWhitespace(input.value)}`, input.dataset.param);
+            addToEndpoint(`&${param}=${removeWhitespace(input.value)}`, param);
         });
     }
 
@@ -177,6 +191,7 @@ function validateNoSpecialCharacters(input,label){
 }
 
 function validateNoDuplicates(input,label){
+    console.log(input.dataset.param);
     if(mainEndpointOutputElem.textContent.includes(input.dataset.param)){
         console.log(`${input.dataset.param} already exists.`);
         buttonFeedback(label, "No duplicate values allowed", 3000, false);
