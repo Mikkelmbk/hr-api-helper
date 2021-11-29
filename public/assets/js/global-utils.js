@@ -10,15 +10,15 @@ let mainEndpointOutputResponseElem = document.querySelector(".main__endpoint-tes
 
 function buttonFeedback(button, text, time, status){
     // if status is not provided or provided as true then show background color as green, otherwise show it as red.
-    button.disabled = true;
     let bgColor = status == undefined || status == true ? "success-green-background" : "failure-red-background";
-    let defaultText = button.textContent;
+    let defaultText = button.dataset.labelText || button.textContent;
     let timer = time || 1500;
     button.classList.add(bgColor);
     button.innerHTML = text;
+    button.disabled = true;
     setTimeout(() => {
-        button.disabled = false;
         button.classList.remove(bgColor);
         button.innerHTML = defaultText;
+        button.disabled = false;
     }, timer);
 }

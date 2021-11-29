@@ -108,6 +108,7 @@ constructorData.forEach((data) => {
     constructorContainerElem.classList.add("main__endpoint-constructor-container");
     constructorContainerElem.classList.add(data.identifier);
     constructorContainerElem.classList.add(data.constructor);
+
     constructorInputElem.classList.add("main__endpoint-constructor-input");
     constructorInputElem.classList.add(data.identifier);
     constructorInputElem.classList.add(data.constructor);
@@ -116,14 +117,19 @@ constructorData.forEach((data) => {
     constructorLabelElem.classList.add(data.identifier);
     constructorLabelElem.classList.add(data.constructor);
     constructorLabelElem.dataset.param = data.param;
+    constructorLabelElem.textContent = data.labelText;
+    constructorLabelElem.dataset.labelText = data.labelText;
+
+
     constructorButtonElem.classList.add("main__endpoint-constructor-button");
     constructorButtonElem.classList.add(data.identifier);
     constructorButtonElem.classList.add(data.constructor);
     constructorButtonElem.dataset.param = data.param;
-
     constructorButtonElem.innerHTML = "Add parameter";
-    constructorAbbreviationElem.innerHTML = data.labelText;
-    constructorAbbreviationElem.title = data.description;
+
+    // constructorAbbreviationElem.innerHTML = data.labelText;
+    // constructorAbbreviationElem.dataset.labelText = data.labelText;
+    // constructorAbbreviationElem.title = data.description;
 
     constructorInputElem.placeholder = data.placeholderText;
     if(data.constructor === "recom"){
@@ -135,7 +141,7 @@ constructorData.forEach((data) => {
     constructorContainerElem.appendChild(structureDivElem);
     structureDivElem.appendChild(constructorInputElem);
     structureDivElem.appendChild(constructorLabelElem);
-    constructorLabelElem.appendChild(constructorAbbreviationElem);
+    // constructorLabelElem.appendChild(constructorAbbreviationElem);
     constructorContainerElem.appendChild(constructorButtonElem);
 
     
