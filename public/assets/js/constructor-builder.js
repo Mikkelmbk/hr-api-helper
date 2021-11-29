@@ -40,11 +40,19 @@ let constructorData = [
         description: "A parameter which will tell our system which Hello-retail defined values it should find products from."
     },
     {
+        identifier: "crawledData-list",
+        labelText: "crawledData list (Optional)",
+        placeholderText: "Example: productNumbers=1234",
+        constructor: "recom",
+        param: "crawledData",
+        description: "A parameter which will tell our system which Hello-retail defined list values it should find products from."
+    },
+    {
         identifier: "extraData-crawledData",
         labelText: "extraData crawledData (Optional)",
         placeholderText: "Example: carBrand=Toyota",
         constructor: "recom",
-        param: "extraData-crawledData",
+        param: "crawledData",
         description: "A parameter which will tell our system which customer defined values it should find products from."
     },
     {
@@ -52,7 +60,7 @@ let constructorData = [
         labelText: "extraDataList crawledData (Optional)",
         placeholderText: "Example: Series=Cars",
         constructor: "recom",
-        param: "extraDataList-crawledData",
+        param: "crawledData",
         description: "A parameter which will tell our system which customer defined lists of values it should find products from."
     },
     {
@@ -102,7 +110,7 @@ constructorData.forEach((data) => {
     let structureDivElem = document.createElement('div');
     let constructorInputElem = document.createElement('input');
     let constructorLabelElem = document.createElement('label');
-    let constructorAbbreviationElem = document.createElement('abbr');
+    // let constructorAbbreviationElem = document.createElement('abbr');
     let constructorButtonElem = document.createElement('button');
 
     constructorContainerElem.classList.add("main__endpoint-constructor-container");
@@ -113,19 +121,23 @@ constructorData.forEach((data) => {
     constructorInputElem.classList.add(data.identifier);
     constructorInputElem.classList.add(data.constructor);
     constructorInputElem.dataset.param = data.param;
+    constructorInputElem.dataset.identifier = data.identifier;
+
     constructorLabelElem.classList.add("main__endpoint-constructor-label");
     constructorLabelElem.classList.add(data.identifier);
     constructorLabelElem.classList.add(data.constructor);
-    constructorLabelElem.dataset.param = data.param;
     constructorLabelElem.textContent = data.labelText;
     constructorLabelElem.dataset.labelText = data.labelText;
+    constructorLabelElem.dataset.param = data.param;
+    constructorLabelElem.dataset.identifier = data.identifier;
 
 
     constructorButtonElem.classList.add("main__endpoint-constructor-button");
     constructorButtonElem.classList.add(data.identifier);
     constructorButtonElem.classList.add(data.constructor);
-    constructorButtonElem.dataset.param = data.param;
     constructorButtonElem.innerHTML = "Add parameter";
+    constructorButtonElem.dataset.param = data.param;
+    constructorButtonElem.dataset.identifier = data.identifier;
 
     // constructorAbbreviationElem.innerHTML = data.labelText;
     // constructorAbbreviationElem.dataset.labelText = data.labelText;
