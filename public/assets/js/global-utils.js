@@ -6,7 +6,8 @@ let mainEndpointConstructorDescriptionElem = document.querySelector(".main__endp
 let mainEndpointOutputTestBtnElem = document.querySelector(".main__endpoint-output-test"); // endpoint-tester.js
 let mainEndpointOutputResponseWindowElem = document.querySelector(".main__endpoint-test-response-window-description"); // endpoint-tester.js
 let mainEndpointOutputResponseElem = document.querySelector(".main__endpoint-test-response-output"); // endpoint-tester.js
-
+let mainEndpointOutputResponseElemAdvancedSimpleReponseView = document.querySelector(".main__endpoint-test-response-window-simple-advanced-btn"); // endpoint-tester.js, response-window.js
+let APIresponse = "";
 
 function buttonFeedback(button, text, time, status){
     // if status is not provided or provided as true then show background color as green, otherwise show it as red.

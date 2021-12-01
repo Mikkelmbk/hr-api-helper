@@ -1,9 +1,17 @@
 mainEndpointOutputTestBtnElem.addEventListener("click", () => {
-    if(!mainEndpointOutputElem.querySelector(".ids") && !mainEndpointOutputElem.querySelector(".key")){
-        buttonFeedback(mainEndpointOutputTestBtnElem, "Missing required parameter",3000,false);
-        return;
+    if (mainEndpointConstructorDescriptionElem.textContent.includes("Recommendation")) {
+        if (!mainEndpointOutputElem.querySelector(".ids")) {
+            buttonFeedback(mainEndpointOutputTestBtnElem, "Missing required parameter", 3000, false);
+            return;
+        }
     }
-    buttonFeedback(mainEndpointOutputTestBtnElem, "Testing Endpoint",1500);
+    else if (mainEndpointConstructorDescriptionElem.textContent.includes("Search")) {
+        if (!mainEndpointOutputElem.querySelector(".key") || !mainEndpointOutputElem.querySelector(".q")) {
+            buttonFeedback(mainEndpointOutputTestBtnElem, "Missing required parameter", 3000, false);
+            return;
+        }
+    }
+    buttonFeedback(mainEndpointOutputTestBtnElem, "Testing Endpoint", 1500);
     mainEndpointOutputTestBtnElem.disabled = true;
     mainEndpointOutputResponseWindowElem.classList.remove("failure-red-background");
     mainEndpointOutputResponseWindowElem.classList.remove("success-green-background");
@@ -12,34 +20,25 @@ mainEndpointOutputTestBtnElem.addEventListener("click", () => {
             return res.json();
         })
         .then((data) => {
-
             if (mainEndpointConstructorDescriptionElem.textContent.includes("Recommendation")) {
                 let recomResponse = Object.keys(data.result)[0];
-                recomResponse = data.result[recomResponse];
-                if (recomResponse.error && recomResponse.errorCode) {
-                    mainEndpointOutputResponseWindowElem.classList.add("failure-red-background");
-                    return;
-                }
-                buildSimpleView(recomResponse);
+                data = data.result[recomResponse];
             }
-            else if(mainEndpointConstructorDescriptionElem.textContent.includes("Search")){
-                if(data.error && data.errorCode){
-                    mainEndpointOutputResponseWindowElem.classList.add("failure-red-background");
-                    return;
-                }
-                console.log(data);
-                buildSimpleView(data);
-            }
-            mainEndpointOutputResponseWindowElem.classList.add("success-green-background");
+            APIresponse = data;
+            mainEndpointOutputResponseElemAdvancedSimpleReponseView.dataset.responseView = "simple";
+            mainEndpointOutputResponseElemAdvancedSimpleReponseView.textContent = "Show advanced response";
+            mainEndpointOutputResponseElemAdvancedSimpleReponseView.classList.remove("hidden");
+            buildSimpleView(APIresponse);
         })
 });
 
-function registerEndpointTest(button) {
-    button.classList.remove("awaiting-orange-background-color");
-    button.disabled = false;
-}
-
 function buildSimpleView(response) {
+    if (response.error && response.errorCode) {
+        mainEndpointOutputResponseWindowElem.classList.add("failure-red-background");
+        mainEndpointOutputResponseElem.textContent = response.error;
+        return;
+    }
+    mainEndpointOutputResponseWindowElem.classList.add("success-green-background");
     mainEndpointOutputResponseElem.textContent = "";
     let simple = [];
 
@@ -91,9 +90,32 @@ function buildSimpleView(response) {
         container.appendChild(currency);
         mainEndpointOutputResponseElem.appendChild(container);
     });
+
+    if (response.result.length === 0) {
+        mainEndpointOutputResponseElem.textContent += "The request was correct, but did not find any products, check that the parameters you provided are enough to find products, and are correct.";
+    }
 }
 
 function buildAdvancedView(response) {
-    console.log("This is advanced: ", response);
-    mainEndpointOutputResponseElem.textContent = JSON.stringify(response, undefined, 4);
+    if (response.error && response.errorCode) {
+        mainEndpointOutputResponseWindowElem.classList.add("failure-red-background");
+        mainEndpointOutputResponseElem.textContent = response.error;
+        return;
+    }
+    mainEndpointOutputResponseWindowElem.classList.add("success-green-background");
+    mainEndpointOutputResponseElem.textContent = "";
+
+    mainEndpointOutputResponseElem.textContent = response.countAfterSource;
+
+    response.result.forEach((raw)=>{ // IT'S FUCKING RAW
+        let container = document.createElement("div");
+        container.textContent = JSON.stringify(raw, undefined, 4);
+        container.classList.add("main__endpoint-test-response-window-raw");
+        mainEndpointOutputResponseElem.appendChild(container);
+        
+    })
+
+    if (response.result.length === 0) {
+        mainEndpointOutputResponseElem.textContent += " The request was correct, but did not find any products, check that the parameters you provided are enough to find products, and are correct.";
+    }
 }
