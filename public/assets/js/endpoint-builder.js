@@ -101,7 +101,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateColonSign(input.value, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`&${param}=${removeWhitespace(input.value)}`, param);
+            addToEndpoint(`&${param}=${validateSearchFilterWhitespace(input.value)}`, param);
         });
     }
     else {
@@ -129,6 +129,10 @@ function addToEndpoint(addition, param) {
 
 function removeWhitespace(input){
     return input.replace(/\s/g,"%20");
+}
+
+function validateSearchFilterWhitespace(input){
+    return input.replace(/\s/g, "\\ ");
 }
 
 function validateNotEmpty(input, label) {
