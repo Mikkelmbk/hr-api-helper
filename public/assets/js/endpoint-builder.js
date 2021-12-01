@@ -142,7 +142,7 @@ function validateNotEmpty(input, label) {
 };
 
 function validateEqualSign(input, label) {
-    if (!input.match(/^[A-z]*=[A-z0-9\s]+$/g)) {
+    if (!input.match(/^[A-z]*=[A-z0-9\s\-]+$/g)) {
         console.log("Missing equal sign");
         buttonFeedback(label, "Must contain values on both sides of an equal sign", 3000, false);
         return false;

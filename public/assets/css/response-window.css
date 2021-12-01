@@ -62,5 +62,6 @@
 
 .main__endpoint-test-response-window-raw{
     margin:15px 0;
+    word-break: break-word;
     font-family:inherit;
 }
