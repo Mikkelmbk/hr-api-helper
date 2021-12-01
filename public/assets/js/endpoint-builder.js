@@ -111,6 +111,14 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             addToEndpoint(`&${param}=${validateSearchFilterWhitespace(input.value)}`, param);
         });
     }
+    else if(identifier === "website-uuid"){
+        btn.addEventListener("click", () => {
+            if(!validateNotEmpty(input.value, label)) return;
+            if(!validateNoDuplicates(input, label)) return;
+            buttonFeedback(btn, btn.textContent, 1000);
+            addToEndpoint(`?${param}=${removeWhitespace(input.value)}`, param);
+        });
+    }
     else {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
