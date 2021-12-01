@@ -38,7 +38,8 @@
 }
 
 .main__endpoint-output--addition{
-    color:darkgreen;
+    color:rgb(255, 145, 0);
+    font-weight:600;
     cursor:pointer;
 }
 

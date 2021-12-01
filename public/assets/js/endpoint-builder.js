@@ -2,6 +2,13 @@ let mainEndpointConstructorContainerElems = document.querySelectorAll(".main__en
 let mainEndpointConstructorInputProductBoxIdRecomElem = document.querySelector("input[data-param='ids']");
 let mainEndpointConstructorLabelProductBoxIdRecomElem = document.querySelector("label[data-param='ids']");
 
+document.querySelector(".main__endpoint-constructor-clear-input-btn").addEventListener("click",(e)=>{
+    buttonFeedback(e.target, "Cleared inputs", 1000);
+    document.querySelectorAll(".main__endpoint-constructor-input").forEach((input)=>{
+        input.value = "";
+    })
+});
+
 
 mainEndpointConstructorContainerElems.forEach((item) => {
     let btn = item.querySelector(".main__endpoint-constructor-button");

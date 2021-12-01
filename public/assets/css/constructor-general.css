@@ -11,7 +11,7 @@
     z-index: 10;
 }
 
-.main__endpoint-constructor-description{
+.main__endpoint-constructor-description,.main__endpoint-constructor-clear-input-btn{
     user-select:none;
     color:var(--primary-theme-text-color);
     padding:8px 16px;
@@ -22,6 +22,11 @@
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 5px );
     -webkit-backdrop-filter: blur( 5px );  
+}
+
+.main__endpoint-constructor-clear-input-btn{
+    border:none;
+    cursor:pointer;
 }
 
 .main__endpoint-constructor-outer-container{
