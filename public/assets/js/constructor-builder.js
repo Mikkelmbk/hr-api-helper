@@ -103,6 +103,22 @@ let constructorData = [
         param: "filters[]",
         description: "A parameter which will tell our system to find products which match the provided filter."
     },
+    {
+        identifier: "website-uuid",
+        labelText: "Website Uuid",
+        placeholderText: "Example: 1e5fcfd3-bf3f-432e-81f7-04dce561034e",
+        constructor: "tracking",
+        param: "websiteUuid",
+        description: "A parameter which will tell our system which website we should find user data from."
+    },
+    {
+        identifier: "hello-retail-id",
+        labelText: "Hello retail id",
+        placeholderText: "Example: 61516f2bad9dbb419d433a13",
+        constructor: "tracking",
+        param: "hello_retail_id",
+        description: "A parameter which will tell our system which user we should find data from."
+    },
 ];
 
 constructorData.forEach((data) => {
@@ -149,6 +165,9 @@ constructorData.forEach((data) => {
     }
     else if(data.constructor === "search"){
         mainEndpointConstructorOuterSearchContainerElem.appendChild(constructorContainerElem);
+    }
+    else if(data.constructor === "tracking"){
+        mainEndpointConstructorOuterTrackingUserIdContainerElem.appendChild(constructorContainerElem);
     }
     constructorContainerElem.appendChild(structureDivElem);
     structureDivElem.appendChild(constructorInputElem);

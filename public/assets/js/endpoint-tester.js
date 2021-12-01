@@ -11,6 +11,13 @@ mainEndpointOutputTestBtnElem.addEventListener("click", () => {
             return;
         }
     }
+    else if (mainEndpointConstructorDescriptionElem.textContent.includes("Tracking")) {
+        if (!mainEndpointOutputElem.querySelector(".websiteUuid") || !mainEndpointOutputElem.querySelector(".hello_retail_id")) {
+            console.log("Hello world");
+            buttonFeedback(mainEndpointOutputTestBtnElem, "Missing required parameter", 3000, false);
+            return;
+        }
+    }
     buttonFeedback(mainEndpointOutputTestBtnElem, "Testing Endpoint", 1500);
     mainEndpointOutputTestBtnElem.disabled = true;
     mainEndpointOutputResponseWindowElem.classList.remove("failure-red-background");
@@ -20,15 +27,21 @@ mainEndpointOutputTestBtnElem.addEventListener("click", () => {
             return res.json();
         })
         .then((data) => {
-            if (mainEndpointConstructorDescriptionElem.textContent.includes("Recommendation")) {
-                let recomResponse = Object.keys(data.result)[0];
-                data = data.result[recomResponse];
+            if(mainEndpointConstructorDescriptionElem.textContent.includes("Search") || mainEndpointConstructorDescriptionElem.textContent.includes("Recommendation")){
+                if (mainEndpointConstructorDescriptionElem.textContent.includes("Recommendation")) {
+                    let recomResponse = Object.keys(data.result)[0];
+                    data = data.result[recomResponse];
+                }
+                APIresponse = data;
+                mainEndpointOutputResponseElemAdvancedSimpleReponseView.dataset.responseView = "simple";
+                mainEndpointOutputResponseElemAdvancedSimpleReponseView.textContent = "Show advanced response";
+                mainEndpointOutputResponseElemAdvancedSimpleReponseView.classList.remove("hidden");
+                buildSimpleView(APIresponse);
             }
-            APIresponse = data;
-            mainEndpointOutputResponseElemAdvancedSimpleReponseView.dataset.responseView = "simple";
-            mainEndpointOutputResponseElemAdvancedSimpleReponseView.textContent = "Show advanced response";
-            mainEndpointOutputResponseElemAdvancedSimpleReponseView.classList.remove("hidden");
-            buildSimpleView(APIresponse);
+            else if(mainEndpointConstructorDescriptionElem.textContent.includes("Tracking")){
+                mainEndpointOutputResponseElemAdvancedSimpleReponseView.classList.add("hidden");
+                trackingUserIdview(data);
+            }
         })
 });
 
@@ -118,4 +131,29 @@ function buildAdvancedView(response) {
     if (response.result.length === 0) {
         mainEndpointOutputResponseElem.textContent += " The request was correct, but did not find any products, check that the parameters you provided are enough to find products, and are correct.";
     }
+}
+
+function trackingUserIdview(response){
+    mainEndpointOutputResponseElem.textContent = "";
+
+    let combined = [];
+
+    combined.push("Data for tracked user");
+
+    response.user.brand.forEach((brand)=>{
+        brand.type = "brand";
+        combined.push(brand);
+    });
+
+    response.user.hierarchy.forEach((hierarchy)=>{
+        hierarchy.type = "hierarchy";
+        combined.push(hierarchy);
+    })
+
+    combined.forEach((user)=>{
+        let container = document.createElement("div");
+        container.textContent = JSON.stringify(user, undefined, 4);
+        container.classList.add("main__endpoint-test-response-window-raw");
+        mainEndpointOutputResponseElem.appendChild(container);
+    })
 }
