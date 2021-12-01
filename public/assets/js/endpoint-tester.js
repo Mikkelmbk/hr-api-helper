@@ -24,8 +24,11 @@ mainEndpointOutputTestBtnElem.addEventListener("click", () => {
                 let recomResponse = Object.keys(data.result)[0];
                 data = data.result[recomResponse];
             }
-            // buildSimpleView(data);
-            buildAdvancedView(data);
+            APIresponse = data;
+            mainEndpointOutputResponseElemAdvancedSimpleReponseView.dataset.responseView = "simple";
+            mainEndpointOutputResponseElemAdvancedSimpleReponseView.textContent = "Show advanced response";
+            mainEndpointOutputResponseElemAdvancedSimpleReponseView.classList.remove("hidden");
+            buildSimpleView(APIresponse);
         })
 });
 
