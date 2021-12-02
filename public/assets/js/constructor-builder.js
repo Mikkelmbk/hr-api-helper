@@ -151,6 +151,7 @@ constructorData.forEach((data) => {
     constructorButtonElem.classList.add("main__endpoint-constructor-button");
     constructorButtonElem.classList.add(data.identifier);
     constructorButtonElem.classList.add(data.constructor);
+    constructorButtonElem.classList.add("input-button");
     constructorButtonElem.innerHTML = "Add parameter";
     constructorButtonElem.dataset.param = data.param;
     constructorButtonElem.dataset.identifier = data.identifier;

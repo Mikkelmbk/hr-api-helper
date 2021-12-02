@@ -5,7 +5,7 @@ mainEndpointTestResponseWindowClearBtnElem.addEventListener("click",()=>{
     mainEndpointOutputResponseWindowElem.classList.remove("success-green-background");
     mainEndpointOutputResponseWindowElem.classList.remove("failure-red-background");
     mainEndpointOutputResponseElem.textContent = "";
-    buttonFeedback(mainEndpointTestResponseWindowClearBtnElem, mainEndpointTestResponseWindowClearBtnElem.textContent, 2000);
+    buttonFeedback(mainEndpointTestResponseWindowClearBtnElem, mainEndpointTestResponseWindowClearBtnElem.textContent, 800);
 });
 
 mainEndpointOutputResponseElemAdvancedSimpleReponseView.addEventListener("click",(e)=>{

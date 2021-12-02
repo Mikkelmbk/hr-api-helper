@@ -9,14 +9,14 @@
 }
 
 body{
-    background: linear-gradient(20deg,#e0477c,#165093);
+    background: var(--primary-theme-body-bg);
     min-height:100vh;
     display:flex;
     flex-direction:column;
 }
 
 .success-green-background{
-    background-color: rgba(36, 128, 0, 0.801)!important;
+    background-color: var(--success-green-color)!important;
 }
 
 .btn-hover-background{
@@ -28,7 +28,7 @@ body{
 }
 
 .failure-red-background{
-    background-color:red!important;
+    background-color:var(--failure-red-color)!important;
 }
 
 .hidden{

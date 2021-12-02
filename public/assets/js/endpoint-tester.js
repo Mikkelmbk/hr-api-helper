@@ -13,7 +13,6 @@ mainEndpointOutputTestBtnElem.addEventListener("click", () => {
     }
     else if (mainEndpointConstructorDescriptionElem.textContent.includes("Tracking")) {
         if (!mainEndpointOutputElem.querySelector(".websiteUuid") || !mainEndpointOutputElem.querySelector(".hello_retail_id")) {
-            console.log("Hello world");
             buttonFeedback(mainEndpointOutputTestBtnElem, "Missing required parameter", 3000, false);
             return;
         }

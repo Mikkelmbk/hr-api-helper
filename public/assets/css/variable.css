@@ -1,12 +1,24 @@
 :root{
+    /* Fonts and sizes */
     --header-height:6vh;
-    --label-focus-transition: opacity 0.2s ease;
-    --primary-theme-header-bg: rgba(243,245,246,1.00);
-    --primary-theme-main-bg: white;
-    --primary-theme-endpoint-builder-bg: rgb(255, 255, 255);
-    --primary-theme-endpoint-label-bg: #fff;
-    --primary-theme-response-window-bg: #666;
-    --primary-theme-text-color: white;
     --primary-theme-font-size: 14px;
     --primary-theme-border-radius: 20px;
+
+    /* Colors and shadows */
+    --deep-blue-color: #165093;
+    --shallow-blue-color: #298eea;
+    --white-medium-opacity-color: rgb(255, 255, 255, 0.3);
+    --white-low-opacity-color: rgba(255,255,255,0.1);
+    --success-green-color: rgba(36, 128, 0, 0.801);
+    --failure-red-color: red;
+    --white-full-opacity-color: white;
+    --box-shadow-medium-opacity: 0 8px 32px 0 rgba(31, 38, 135, .5);
+
+    /* Themes */
+    --primary-theme-header-bg: var(--white-low-opacity-color);
+    --primary-theme-body-bg: linear-gradient(20deg,#e0477c,var(--deep-blue-color));
+    --primary-theme-endpoint-builder-bg: var(--white-medium-opacity-color);
+    --primary-theme-label-bg: var(--white-low-opacity-color);
+    --primary-theme-response-window-bg: var(--deep-blue-color);
+    --primary-theme-text-color: var(--white-full-opacity-color);
 }
