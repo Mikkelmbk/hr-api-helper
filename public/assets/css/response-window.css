@@ -1,4 +1,5 @@
 .main__endpoint-test-response-window-container{
+    flex-basis:45%; /* Ensures that the response window does not move to under the input fields whenever you test an endpoint */
     margin-top:30px;
     min-width:500px;
     position:relative;
@@ -25,7 +26,7 @@
 }
 
 .main__endpoint-test-response-output{
-    color:orange;
+    color:var(--orange-full-opacity-color);
     font-family: 'Fria Mono',monospace;
     font-size:var(--primary-theme-font-size);
 }
@@ -40,12 +41,32 @@
     color: lightgreen;
 }
 
-.response-product-container{
+.response-container{
+    border: 1px solid var(--orange-full-opacity-color);
+    padding:10px;
+    border-radius:var(--primary-theme-border-radius);
     margin: 30px 0;
+}
+
+.response-container > p,.response-container a{
+    padding:4px 0;
+    display:block;
+}
+
+.response-heading{
+    margin:15px 0;
+    text-align:center;
+    background-color:var(--white-medium-opacity-color);
+    font-size:30px;
+    letter-spacing:8px;
+    border-radius:var(--primary-theme-border-radius);
 }
 
 .main__endpoint-test-response-window-raw{
     margin:15px 0;
     word-break: break-word;
     font-family:inherit;
+    border: 1px solid var(--orange-full-opacity-color);
+    padding:10px;
+    border-radius:var(--primary-theme-border-radius);
 }

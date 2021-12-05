@@ -104,6 +104,22 @@ let constructorData = [
         description: "A parameter which will tell our system to find products which match the provided filter."
     },
     {
+        identifier: "extraData-filters",
+        labelText: "extraData Filters (Optional)",
+        placeholderText: "Example: season:autumn | Range example: age:5,10",
+        constructor: "search",
+        param: "filters[]",
+        description: "A parameter which will tell our system to find products which match the provided extraData filter."
+    },
+    {
+        identifier: "extraDataList-filters",
+        labelText: "extraDataList Filters (Optional)",
+        placeholderText: "Example: season:autumn | Range example: age:5,10",
+        constructor: "search",
+        param: "filters[]",
+        description: "A parameter which will tell our system to find products which match the provided extraDataList filter."
+    },
+    {
         identifier: "website-uuid",
         labelText: "Website Uuid",
         placeholderText: "Example: 1e5fcfd3-bf3f-432e-81f7-04dce561034e",

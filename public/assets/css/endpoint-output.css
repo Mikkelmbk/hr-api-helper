@@ -37,7 +37,7 @@
 }
 
 .main__endpoint-output--addition{
-    color:rgb(255, 145, 0);
+    color:var(--orange-full-opacity-color);
     font-weight:600;
     cursor:pointer;
 }

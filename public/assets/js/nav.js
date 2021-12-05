@@ -17,7 +17,7 @@ function constructorDisplay(activeTab){
     }
     else if(activeTab === "search-rest-endpoint"){
         mainEndpointConstructorOuterSearchContainerElem.classList.remove("hidden");
-        mainEndpointOutputElem.innerHTML = "https://www.addwish.com/api/v1/search/partnerSearch?format=json";
+        mainEndpointOutputElem.innerHTML = "https://www.addwish.com/api/v1/search/partnerSearch?format=json&return_filters=true&category_count=12";
         mainEndpointConstructorDescriptionElem.innerHTML = "Search REST Endpoint";
     }
     else if(activeTab === "tracking-user-id-endpoint"){

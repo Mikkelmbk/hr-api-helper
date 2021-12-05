@@ -1,6 +1,6 @@
 let mainEndpointTestResponseWindowClearBtnElem = document.querySelector(".main__endpoint-test-response-window-clear-btn");
 
-mainEndpointTestResponseWindowClearBtnElem.addEventListener("click",()=>{
+mainEndpointTestResponseWindowClearBtnElem.addEventListener("click", () => {
     mainEndpointOutputResponseElemAdvancedSimpleReponseView.classList.add("hidden");
     mainEndpointOutputResponseWindowElem.classList.remove("success-green-background");
     mainEndpointOutputResponseWindowElem.classList.remove("failure-red-background");
@@ -8,15 +8,15 @@ mainEndpointTestResponseWindowClearBtnElem.addEventListener("click",()=>{
     buttonFeedback(mainEndpointTestResponseWindowClearBtnElem, mainEndpointTestResponseWindowClearBtnElem.textContent, 800);
 });
 
-mainEndpointOutputResponseElemAdvancedSimpleReponseView.addEventListener("click",(e)=>{
+mainEndpointOutputResponseElemAdvancedSimpleReponseView.addEventListener("click", (e) => {
     mainEndpointOutputResponseElem.textContent = "";
-    if(e.target.dataset.responseView === "simple"){
+    if (e.target.dataset.responseView === "simple") {
         e.target.dataset.responseView = "advanced";
         e.target.textContent = "Show simple response";
         buttonFeedback(e.target, "Show simple response", 300);
         buildAdvancedView(APIresponse);
     }
-    else{
+    else {
         e.target.dataset.responseView = "simple";
         e.target.textContent = "Show advanced response";
         buttonFeedback(e.target, "Show advanced response", 300);
@@ -31,12 +31,13 @@ function buildSimpleView(response) {
         mainEndpointOutputResponseElem.textContent = response.error;
         return;
     }
+    
     mainEndpointOutputResponseWindowElem.classList.add("success-green-background");
     mainEndpointOutputResponseElem.textContent = "";
-    let simple = [];
+    let simpleProduct = [];
 
     response.result.forEach((product) => {
-        simple.push({
+        simpleProduct.push({
             title: product.title,
             price: product.price,
             oldPrice: product.oldPrice ? product.oldPrice : product.price,
@@ -47,11 +48,24 @@ function buildSimpleView(response) {
             currency: product.currency
         });
     });
-    let productCount = document.createElement('p');
-    productCount.textContent = response.countAfterSource;
-    mainEndpointOutputResponseElem.appendChild(productCount);
 
-    simple.forEach((product) => {
+
+
+    if (response.result.length === 0) {
+        textSection("NO PRODUCTS FOUND");
+    }
+    else{
+        textSection("PRODUCT SECTION");
+    }
+
+    if (mainEndpointConstructorDescriptionElem.textContent.includes("Recommendation")) {
+        let productCount = document.createElement('p');
+        productCount.textContent = response.countAfterSource;
+        mainEndpointOutputResponseElem.appendChild(productCount);
+    }
+
+
+    simpleProduct.forEach((product) => {
         let container = document.createElement('div');
         let title = document.createElement('p');
         let price = document.createElement('p');
@@ -71,7 +85,7 @@ function buildSimpleView(response) {
         url.href = product.url;
         productNumber.textContent = `ProductNumber: ${product.productNumber}`;
         currency.textContent = `Currency: ${product.currency}`;
-        container.classList.add("response-product-container");
+        container.classList.add("response-container");
 
         container.appendChild(title);
         container.appendChild(price);
@@ -84,8 +98,49 @@ function buildSimpleView(response) {
         mainEndpointOutputResponseElem.appendChild(container);
     });
 
-    if (response.result.length === 0) {
-        mainEndpointOutputResponseElem.textContent += "The request was correct, but did not find any products, check that the parameters you provided are enough to find products, and are correct.";
+    if (mainEndpointConstructorDescriptionElem.textContent.includes("Search")) {
+        if (response.categories.length === 0) {
+            textSection("NO CATEGORIES FOUND");
+        }
+        else{
+            textSection("CATEGORY SECTION");
+        }
+        let simpleCategory = [];
+
+        response.categories.forEach((category) => {
+            simpleCategory.push({
+                title: category.title,
+                description: category.description,
+                url: category.url,
+                keywords: category.keywords,
+                hierarchy: category.hierarchy, 
+            });
+        });
+
+
+        simpleCategory.forEach((category) => {
+            let container = document.createElement('div');
+            let title = document.createElement('p');
+            let description = document.createElement('p');
+            let url = document.createElement('a');
+            let keywords = document.createElement('p');
+            let hierarchy = document.createElement('p');
+    
+            title.textContent = `Title: ${category.title}`;
+            description.textContent = `Description: ${category.description}`;
+            url.textContent = `Url: ${category.url}`;
+            url.href = category.url;
+            keywords.textContent = `keywords: ${category.keywords}`;
+            hierarchy.textContent = `hierarchy: ${category.hierarchy}`;
+            container.classList.add("response-container");
+    
+            container.appendChild(title);
+            container.appendChild(description);
+            container.appendChild(url);
+            container.appendChild(keywords);
+            container.appendChild(hierarchy);
+            mainEndpointOutputResponseElem.appendChild(container);
+        });
     }
 }
 
@@ -98,42 +153,73 @@ function buildAdvancedView(response) {
     mainEndpointOutputResponseWindowElem.classList.add("success-green-background");
     mainEndpointOutputResponseElem.textContent = "";
 
-    mainEndpointOutputResponseElem.textContent = response.countAfterSource;
+    if (response.result.length === 0) {
+        textSection("NO PRODUCTS FOUND");
+    }
+    else{
+        textSection("PRODUCT SECTION");
+    }
 
-    response.result.forEach((raw)=>{ // IT'S FUCKING RAW
+    if (mainEndpointConstructorDescriptionElem.textContent.includes("Recommendation")) {
+        let countAfterSource = document.createElement('p');
+        countAfterSource.textContent = response.countAfterSource;
+        mainEndpointOutputResponseElem.appendChild(countAfterSource);
+    }
+
+
+
+    response.result.forEach((raw) => { // IT'S FUCKING RAW
         let container = document.createElement("div");
         container.textContent = JSON.stringify(raw, undefined, 4);
         container.classList.add("main__endpoint-test-response-window-raw");
         mainEndpointOutputResponseElem.appendChild(container);
-        
     })
 
-    if (response.result.length === 0) {
-        mainEndpointOutputResponseElem.textContent += " The request was correct, but did not find any products, check that the parameters you provided are enough to find products, and are correct.";
+    if (mainEndpointConstructorDescriptionElem.textContent.includes("Search")) {
+        if (response.categories.length === 0) {
+            textSection("NO CATEGORIES FOUND");
+        }
+        else{
+            textSection("CATEGORY SECTION");
+        }
+
+        response.categories.forEach((raw) => { // IT'S FUCKING RAW
+            let container = document.createElement("div");
+            container.textContent = JSON.stringify(raw, undefined, 4);
+            container.classList.add("main__endpoint-test-response-window-raw");
+            mainEndpointOutputResponseElem.appendChild(container);
+        });
     }
 }
 
-function trackingUserIdview(response){
+function trackingUserIdview(response) {
     mainEndpointOutputResponseElem.textContent = "";
 
     let combined = [];
 
     combined.push("Data for tracked user");
 
-    response.user.brand.forEach((brand)=>{
+    response.user.brand.forEach((brand) => {
         brand.type = "brand";
         combined.push(brand);
     });
 
-    response.user.hierarchy.forEach((hierarchy)=>{
+    response.user.hierarchy.forEach((hierarchy) => {
         hierarchy.type = "hierarchy";
         combined.push(hierarchy);
     })
 
-    combined.forEach((user)=>{
+    combined.forEach((user) => {
         let container = document.createElement("div");
         container.textContent = JSON.stringify(user, undefined, 4);
         container.classList.add("main__endpoint-test-response-window-raw");
         mainEndpointOutputResponseElem.appendChild(container);
     })
+}
+
+function textSection(text) {
+    let textSection = document.createElement('h1');
+    textSection.classList.add('response-heading');
+    textSection.textContent = text;
+    mainEndpointOutputResponseElem.appendChild(textSection);
 }
