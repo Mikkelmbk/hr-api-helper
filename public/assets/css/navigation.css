@@ -1,11 +1,9 @@
 .header{
     min-height:var(--header-height);
     background-color:var(--primary-theme-header-bg);
-    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.30);
-    background: rgba( 255, 255, 255, 0.1 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 5px );
-    -webkit-backdrop-filter: blur( 5px ); 
+    box-shadow: var(--box-shadow-medium-opacity);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); 
 }
 
 .header__ul{
@@ -24,12 +22,12 @@
     transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
     padding:10px;
     font-weight:700;
-    color:#fff;
+    color:var(--primary-theme-text-color);
     font-size:18px;
     border-radius:2px;
 }
 
 .header__li > a:hover{
-    background-color:#298eea;
+    background-color:var(--shallow-blue-color);
     color:white;
 }

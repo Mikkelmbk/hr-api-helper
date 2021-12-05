@@ -1,0 +1,29 @@
+.opacity-button{
+    user-select:none;
+    color:var(--primary-theme-text-color);
+    padding:8px 16px;
+    border-radius:var(--primary-theme-border-radius);
+    font-size:var(--primary-theme-font-size);
+    margin-right:8px;
+    background: var(--white-medium-opacity-color);
+    box-shadow: var(--box-shadow-medium-opacity);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); 
+}
+
+.input-button{
+    height:35px;
+    width:125px;
+    background-color:var(--deep-blue-color);
+    color:var(--primary-theme-text-color);
+    border:none;
+    border-radius:0 20px 20px 0;
+    padding:4px;
+    margin-left:-1px;
+    cursor:pointer;
+    font-size:var(--primary-theme-font-size);
+}
+
+.input-button:hover{
+    background-color:var(--shallow-blue-color);
+}

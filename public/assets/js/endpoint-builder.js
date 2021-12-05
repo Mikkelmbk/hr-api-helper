@@ -53,7 +53,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateEqualSign(input.value, label)) return;
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
-            console.log(formattedValue);
+            // console.log(formattedValue);
             let preText = `&${param}[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${removeWhitespace(formattedValue.shift())}]=${removeWhitespace(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(preText, param);
@@ -65,7 +65,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateEqualSign(input.value, label)) return;
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
-            console.log(formattedValue);
+            // console.log(formattedValue);
             let preText = `&${param}[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(preText, param);
@@ -152,7 +152,7 @@ function validateSearchFilterWhitespace(input){
 
 function validateNotEmpty(input, label) {
     if (input == "") {
-        console.log("empty input");
+        // console.log("empty input");
         buttonFeedback(label, "Cannot be empty", 3000, false);
         return false;
     }
@@ -162,7 +162,7 @@ function validateNotEmpty(input, label) {
 
 function validateEqualSign(input, label) {
     if (!input.match(/^[A-z]*=[A-z0-9\s\-]+$/g)) {
-        console.log("Missing equal sign");
+        // console.log("Missing equal sign");
         buttonFeedback(label, "Must contain values on both sides of an equal sign", 3000, false);
         return false;
     }
@@ -171,7 +171,7 @@ function validateEqualSign(input, label) {
 };
 function validateColonSign(input, label) {
     if (!input.match(/^[A-z]*:[A-z0-9\s]+(,[0-9]+|$)/g)) {
-        console.log("Missing colon sign");
+        // console.log("Missing colon sign");
         buttonFeedback(label, "Must contain values on both sides of a colon sign", 3000, false);
         return false;
     }
@@ -181,7 +181,7 @@ function validateColonSign(input, label) {
 
 function validateNumbers(input, label){
     if (isNaN(input)) {
-        console.log("Must be a number");
+        // console.log("Must be a number");
         buttonFeedback(label, "Must only contain numbers", 3000, false);
         return false;
     }
@@ -191,7 +191,7 @@ function validateNumbers(input, label){
 
 function validateRecommendationBoxKey(input,label){
     if(!input.match(/^[A-z0-9]+$/g) && !input.match(/^[A-z0-9]+,[A-z0-9]+$/)){
-        console.log("Incorrect formatting");
+        // console.log("Incorrect formatting");
         buttonFeedback(label, "Box id's must be separated by a comma", 3000, false);
         return false;
     }
@@ -201,7 +201,7 @@ function validateRecommendationBoxKey(input,label){
 
 function validateNoSpecialCharacters(input,label){
     if(!input.match(/^[A-z0-9]+$/)){
-        console.log("Special characters present");
+        // console.log("Special characters present");
         buttonFeedback(label, "No special characters allowed", 3000, false);
         return false;
     }
@@ -210,9 +210,9 @@ function validateNoSpecialCharacters(input,label){
 }
 
 function validateNoDuplicates(input,label){
-    console.log(input.dataset.param);
+    // console.log(input.dataset.param);
     if(mainEndpointOutputElem.textContent.includes(input.dataset.param)){
-        console.log(`${input.dataset.param} already exists.`);
+        // console.log(`${input.dataset.param} already exists.`);
         buttonFeedback(label, "No duplicate values allowed", 3000, false);
         return false;
     }
