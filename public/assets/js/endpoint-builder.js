@@ -77,7 +77,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateEqualSign(input.value, label)) return;
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
-            let preText = `&${param}[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraData][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
+            let preText = `&${param}[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraData][${removeWhitespace(formattedValue.shift())}]=${removeWhitespace(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(preText, param);
         })
@@ -109,6 +109,22 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateColonSign(input.value, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(`&${param}=${validateSearchFilterWhitespace(input.value)}`, param);
+        });
+    }
+    else if(identifier === "extraData-filters"){
+        btn.addEventListener("click", () => {
+            if(!validateNotEmpty(input.value, label)) return;
+            if(!validateColonSign(input.value, label)) return;
+            buttonFeedback(btn, btn.textContent, 1000);
+            addToEndpoint(`&${param}=extraData.${validateSearchFilterWhitespace(input.value)}`, param);
+        });
+    }
+    else if(identifier === "extraDataList-filters"){
+        btn.addEventListener("click", () => {
+            if(!validateNotEmpty(input.value, label)) return;
+            if(!validateColonSign(input.value, label)) return;
+            buttonFeedback(btn, btn.textContent, 1000);
+            addToEndpoint(`&${param}=extraDataList.${validateSearchFilterWhitespace(input.value)}`, param);
         });
     }
     else if(identifier === "website-uuid"){
@@ -169,6 +185,7 @@ function validateEqualSign(input, label) {
     label.classList.remove("failure-red-background");
     return true;
 };
+
 function validateColonSign(input, label) {
     if (!input.match(/^[A-z]*:[A-z0-9\s]+(,[0-9]+|$)/g)) {
         // console.log("Missing colon sign");
@@ -178,6 +195,16 @@ function validateColonSign(input, label) {
     label.classList.remove("failure-red-background");
     return true;
 };
+
+// function extraDatavalidateColonSign(input, label) {
+//     if (!input.match(/^[A-z\.]*:[A-z0-9\s]+(,[0-9]+|$)/g)) {
+//         // console.log("Missing colon sign");
+//         buttonFeedback(label, "Must contain values on both sides of a colon sign", 3000, false);
+//         return false;
+//     }
+//     label.classList.remove("failure-red-background");
+//     return true;
+// };
 
 function validateNumbers(input, label){
     if (isNaN(input)) {
