@@ -105,6 +105,8 @@ function buildSimpleView(response) {
         else{
             textSection("CATEGORY SECTION");
         }
+
+        console.log(response);
         let simpleCategory = [];
 
         response.categories.forEach((category) => {
@@ -139,6 +141,24 @@ function buildSimpleView(response) {
             container.appendChild(url);
             container.appendChild(keywords);
             container.appendChild(hierarchy);
+            mainEndpointOutputResponseElem.appendChild(container);
+        });
+
+        if (response.filter_titles.length === 0) {
+            textSection("NO FILTERS FOUND");
+        }
+        else{
+            textSection("FILTER SECTION");
+        }
+
+        Object.entries(response.filter_titles).forEach((filter)=>{
+            let container = document.createElement('div');
+            let title = document.createElement('p');
+
+            title.textContent = `${filter.shift()}: ${filter.pop()}`;
+            container.classList.add("response-container");
+
+            container.appendChild(title);
             mainEndpointOutputResponseElem.appendChild(container);
         });
     }
@@ -187,6 +207,24 @@ function buildAdvancedView(response) {
             let container = document.createElement("div");
             container.textContent = JSON.stringify(raw, undefined, 4);
             container.classList.add("main__endpoint-test-response-window-raw");
+            mainEndpointOutputResponseElem.appendChild(container);
+        });
+
+        if (response.filter_titles.length === 0) {
+            textSection("NO FILTERS FOUND");
+        }
+        else{
+            textSection("FILTER SECTION");
+        }
+
+        Object.entries(response.filter_titles).forEach((filter)=>{
+            let container = document.createElement('div');
+            let title = document.createElement('p');
+
+            title.textContent = `${filter.shift()}: ${filter.pop()}`;
+            container.classList.add("response-container");
+
+            container.appendChild(title);
             mainEndpointOutputResponseElem.appendChild(container);
         });
     }
