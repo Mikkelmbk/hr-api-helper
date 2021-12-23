@@ -24,7 +24,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateNoSpecialCharacters(input.value,label)) return;
             if(!validateNoDuplicates(input, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`${handleUrlVariable()}${param}=${removeWhitespace(input.value)}`, param);
+            addToEndpoint(`${handleUrlVariable()}${param}=${handleUrlEncoding(input.value)}`, param);
         })
     }
     else if (identifier === "product-box-id") {
@@ -33,7 +33,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateRecommendationBoxKey(input.value,label)) return;
             if(!validateNoDuplicates(input, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`${handleUrlVariable()}${param}=${removeWhitespace(input.value)}`, param);
+            addToEndpoint(`${handleUrlVariable()}${param}=${handleUrlEncoding(input.value)}`, param);
         })
     }
     else if (identifier === "hierarchy") {
@@ -42,7 +42,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             if(!validateRecommendationBoxKey(mainEndpointConstructorInputProductBoxIdRecomElem.value,mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let hierarchyIndexOne = 0;
-            let preText = `${handleUrlVariable()}crawledData[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${param}][${hierarchyIndexOne}][]=${removeWhitespace(input.value)}`;
+            let preText = `${handleUrlVariable()}crawledData[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${param}][${hierarchyIndexOne}][]=${handleUrlEncoding(input.value)}`;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(preText, param);
         });
@@ -54,7 +54,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
             // console.log(formattedValue);
-            let preText = `${handleUrlVariable()}${param}[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${removeWhitespace(formattedValue.shift())}]=${removeWhitespace(formattedValue.pop())}`;
+            let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${handleUrlEncoding(formattedValue.shift())}]=${handleUrlEncoding(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(preText, param);
         })
@@ -66,7 +66,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
             // console.log(formattedValue);
-            let preText = `${handleUrlVariable()}${param}[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
+            let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${handleUrlEncoding(formattedValue.shift())}][]=${handleUrlEncoding(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(preText, param);
         })
@@ -77,7 +77,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateEqualSign(input.value, label)) return;
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
-            let preText = `${handleUrlVariable()}${param}[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraData][${removeWhitespace(formattedValue.shift())}]=${removeWhitespace(formattedValue.pop())}`;
+            let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraData][${handleUrlEncoding(formattedValue.shift())}]=${handleUrlEncoding(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(preText, param);
         })
@@ -88,7 +88,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateEqualSign(input.value, label)) return;
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             let formattedValue = input.value.split("=");
-            let preText = `${handleUrlVariable()}${param}[${removeWhitespace(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraDataList][${removeWhitespace(formattedValue.shift())}][]=${removeWhitespace(formattedValue.pop())}`;
+            let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraDataList][${handleUrlEncoding(formattedValue.shift())}][]=${handleUrlEncoding(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(preText, param);
         })
@@ -100,7 +100,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateNumbers(input.value, label)) return;
             if(!validateNoDuplicates(input, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`${handleUrlVariable()}${param}=${removeWhitespace(input.value)}`, param);
+            addToEndpoint(`${handleUrlVariable()}${param}=${handleUrlEncoding(input.value)}`, param);
         });
     }
     else if(identifier === "filters"){
@@ -132,7 +132,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNoDuplicates(input, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`${handleUrlVariable()}${param}=${removeWhitespace(input.value)}`, param);
+            addToEndpoint(`${handleUrlVariable()}${param}=${handleUrlEncoding(input.value)}`, param);
         });
     }
     else {
@@ -140,7 +140,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNoDuplicates(input, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`${handleUrlVariable()}${param}=${removeWhitespace(input.value)}`, param);
+            addToEndpoint(`${handleUrlVariable()}${param}=${handleUrlEncoding(input.value)}`, param);
         });
     }
 
@@ -163,8 +163,8 @@ function handleUrlVariable(){
     return !mainEndpointOutputElem.textContent.includes("?") ? "?" : "&";
 }
 
-function removeWhitespace(input){
-    return input.replace(/\s/g,"%20");
+function handleUrlEncoding(input){
+    return input.replace(/\s/g,"%20").replace("&","%26");
 }
 
 function validateSearchFilterWhitespace(input){
