@@ -1,5 +1,5 @@
 # hr-api-helper
-An interface to help build Hello retail API endpoints
+An interface to help build Hello retail API request urls
 
 This is also an excercise for me to learn how to work with Branches.
 
