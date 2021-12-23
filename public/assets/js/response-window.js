@@ -232,10 +232,19 @@ function buildAdvancedView(response) {
 
 function trackingUserIdview(response) {
     mainEndpointOutputResponseElem.textContent = "";
+    
+    if(response.error === "Website not found"){
+        textSection("INCORRECT WEBSITE UUID");
+        return;
+    }
+    if(Object.keys(response.user).length <= 0){
+        textSection("NO USER DATA RECORDED");
+        return;
+    }
+
+    textSection("RECORDED USER DATA");
 
     let combined = [];
-
-    combined.push("Data for tracked user");
 
     response.user.brand.forEach((brand) => {
         brand.type = "brand";
@@ -253,6 +262,7 @@ function trackingUserIdview(response) {
         container.classList.add("main__endpoint-test-response-window-raw");
         mainEndpointOutputResponseElem.appendChild(container);
     })
+
 }
 
 function textSection(text) {
