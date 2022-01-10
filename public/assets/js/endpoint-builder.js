@@ -85,8 +85,8 @@ mainEndpointConstructorContainerElems.forEach((item) => {
     else if(identifier === "extraDataList-crawledData"){
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
-            if(!validateEqualSign(input.value, label)) return;
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
+            if(!validateEqualSign(input.value, label)) return;
             let formattedValue = input.value.split("=");
             let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraDataList][${handleUrlEncoding(formattedValue.shift())}][]=${handleUrlEncoding(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
@@ -173,7 +173,6 @@ function validateSearchFilterWhitespace(input){
 
 function validateNotEmpty(input, label) {
     if (input == "") {
-        // console.log("empty input");
         buttonFeedback(label, "Cannot be empty", 3000, false);
         return false;
     }
@@ -182,8 +181,7 @@ function validateNotEmpty(input, label) {
 };
 
 function validateEqualSign(input, label) {
-    if (!input.match(/^[A-z]*=[A-z0-9\s\-]+$/g)) {
-        // console.log("Missing equal sign");
+    if (!input.match(/^[A-z]*=[A-z0-9\s\-\/\:\.\%]+$/g)) {
         buttonFeedback(label, "Must contain values on both sides of an equal sign", 3000, false);
         return false;
     }
@@ -193,7 +191,6 @@ function validateEqualSign(input, label) {
 
 function validateColonSign(input, label) {
     if (!input.match(/^[A-z]*:[A-z0-9\s]+(,[0-9]+|$)/g)) {
-        // console.log("Missing colon sign");
         buttonFeedback(label, "Must contain values on both sides of a colon sign", 3000, false);
         return false;
     }
