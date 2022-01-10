@@ -9,15 +9,16 @@
     --shallow-blue-color: #298eea;
     --white-medium-opacity-color: rgb(255, 255, 255, 0.3);
     --white-low-opacity-color: rgba(255,255,255,0.1);
-    --success-green-color: rgba(36, 128, 0, 0.801);
+    --success-green-color: rgb(36, 128, 0);
     --failure-red-color: red;
     --white-full-opacity-color: white;
+    --black-full-opacity-color: black;
     --box-shadow-medium-opacity: 0 8px 32px 0 rgba(31, 38, 135, .5);
     --orange-full-opacity-color: rgb(255, 145, 0);
 
     /* Themes */
-    --primary-theme-header-bg: var(--white-low-opacity-color);
-    --primary-theme-body-bg: linear-gradient(20deg,#e0477c,var(--deep-blue-color));
+    --primary-theme-shallow-grey-bg: rgb(39, 39, 39)!important;
+    --primary-theme-deep-grey-bg: rgb(29, 29, 29)!important;
     --primary-theme-endpoint-builder-bg: var(--white-medium-opacity-color);
     --primary-theme-label-bg: var(--white-low-opacity-color);
     --primary-theme-response-window-bg: var(--deep-blue-color);

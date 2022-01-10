@@ -1,9 +1,6 @@
 .header{
     min-height:var(--header-height);
-    background-color:var(--primary-theme-header-bg);
-    box-shadow: var(--box-shadow-medium-opacity);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px); 
+    background-color:var(--primary-theme-shallow-grey-bg);
 }
 
 .header__ul{
@@ -25,9 +22,9 @@
     color:var(--primary-theme-text-color);
     font-size:18px;
     border-radius:2px;
+    font-family:'Helvetica';
 }
 
 .header__li > a:hover{
     background-color:var(--shallow-blue-color);
-    color:white;
 }

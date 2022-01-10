@@ -12,15 +12,13 @@
 }
 
 .main__endpoint-output-inner-container{
+    border: 3px solid var(--shallow-blue-color);
     min-height:80px;
     border-radius:var(--primary-theme-border-radius);
     display:flex;
     align-items:center;
     padding:8px 20px;
-    background: var(--primary-theme-endpoint-builder-bg);
-    box-shadow: var(--box-shadow-medium-opacity);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background-color: var(--primary-theme-shallow-grey-bg);
 }
 
 .main__endpoint-output-border-position{
@@ -34,56 +32,15 @@
 
 .main__endpoint-output,.main__endpoint-output--addition{
     font-family:'Fira Mono', monospace;
+    color:var(--white-full-opacity-color);
 }
 
 .main__endpoint-output--addition{
-    color:var(--orange-full-opacity-color);
+    color:var(--shallow-blue-color);
     font-weight:600;
     cursor:pointer;
 }
 
 .main__endpoint-output--addition:hover{
-    color:var(--white-full-opacity-color);
-}
-
-.main__endpoint-output-clipboard-copy,
-.main__endpoint-output-test{
-    cursor:pointer;
-    border:unset;
-    width:200px;
-    background-color:var(--primary-theme-endpoint-label-bg);
-    color:var(--primary-theme-text-color);
-    padding:8px 8px;
-    border-radius:var(--primary-theme-border-radius);
-    font-size:var(--primary-theme-font-size);
-    margin-right:8px;
-    background: var(--white-medium-opacity-color);
-    box-shadow: var(--box-shadow-medium-opacity);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    transition: background-color 1s linear;
-    overflow: hidden;
-}
-.main__endpoint-output-clipboard-copy::after,
-.main__endpoint-output-test::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #e0477c60;
-    z-index: -1;
-    transition: transform 150ms ease-in;
-    border-radius: var(--primary-theme-border-radius);
-}
-.main__endpoint-output-clipboard-copy::after,
-.main__endpoint-output-test::after {
-    transform: scaleX(0);
-    transform-origin: right;
-}
-.main__endpoint-output-clipboard-copy:hover::after,
-.main__endpoint-output-test:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+    color:var(--deep-blue-color);
 }

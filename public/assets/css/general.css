@@ -9,7 +9,7 @@
 }
 
 body{
-    background: var(--primary-theme-body-bg);
+    background: var(--primary-theme-deep-grey-bg);
     min-height:100vh;
     display:flex;
     flex-direction:column;
