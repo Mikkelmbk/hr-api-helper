@@ -50,8 +50,8 @@ mainEndpointConstructorContainerElems.forEach((item) => {
     else if (identifier === "crawledData") {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
-            if(!validateEqualSign(input.value, label)) return;
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
+            if(!validateEqualSign(input.value, label)) return;
             let formattedValue = input.value.split("=");
             // console.log(formattedValue);
             let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${handleUrlEncoding(formattedValue.shift())}]=${handleUrlEncoding(formattedValue.pop())}`;
@@ -62,8 +62,8 @@ mainEndpointConstructorContainerElems.forEach((item) => {
     else if (identifier === "crawledData-list") {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
-            if(!validateEqualSign(input.value, label)) return;
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
+            if(!validateEqualSign(input.value, label)) return;
             let formattedValue = input.value.split("=");
             // console.log(formattedValue);
             let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${handleUrlEncoding(formattedValue.shift())}][]=${handleUrlEncoding(formattedValue.pop())}`;
@@ -74,8 +74,8 @@ mainEndpointConstructorContainerElems.forEach((item) => {
     else if(identifier === "extraData-crawledData"){
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
-            if(!validateEqualSign(input.value, label)) return;
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
+            if(!extraDataValidateEqualSign(input.value, label)) return;
             let formattedValue = input.value.split("=");
             let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraData][${handleUrlEncoding(formattedValue.shift())}]=${handleUrlEncoding(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
@@ -86,7 +86,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
             if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
-            if(!validateEqualSign(input.value, label)) return;
+            if(!extraDataValidateEqualSign(input.value, label)) return;
             let formattedValue = input.value.split("=");
             let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraDataList][${handleUrlEncoding(formattedValue.shift())}][]=${handleUrlEncoding(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
@@ -114,7 +114,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
     else if(identifier === "extraData-filters"){
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
-            if(!validateColonSign(input.value, label)) return;
+            if(!extraDataValidateColonSign(input.value, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(`${handleUrlVariable()}${param}=extraData.${validateSearchFilterWhitespace(input.value)}`, param);
         });
@@ -122,11 +122,12 @@ mainEndpointConstructorContainerElems.forEach((item) => {
     else if(identifier === "extraDataList-filters"){
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
-            if(!validateColonSign(input.value, label)) return;
+            if(!extraDataValidateColonSign(input.value, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(`${handleUrlVariable()}${param}=extraDataList.${validateSearchFilterWhitespace(input.value)}`, param);
         });
     }
+    // Tracking user id event
     else if(identifier === "website-uuid"){
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
@@ -135,6 +136,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             addToEndpoint(`${handleUrlVariable()}${param}=${handleUrlEncoding(input.value)}`, param);
         });
     }
+    // general events
     else {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
@@ -181,32 +183,84 @@ function validateNotEmpty(input, label) {
 };
 
 function validateEqualSign(input, label) {
-    if (!input.match(/^[A-z]*=[A-z0-9\s\-\/\:\.\%]+$/g)) {
-        buttonFeedback(label, "Must contain values on both sides of an equal sign", 3000, false);
+    if(!input.includes("=")){
+        buttonFeedback(label, "Must contain an equal sign", 3000, false);
         return false;
     }
+    let value = input.split("=");
+
+    if(!value[0].match(/^[A-z]*$/g) || value[0] == ""){
+        buttonFeedback(label, "Only letters allowed left of equal sign", 3000, false);
+        return false;
+    }
+    if(!value[1].match(/^[A-z0-9\s\-\/\:\.\%]+$/g) || value[1] == ""){
+        buttonFeedback(label, "Illegal characters right of equal sign", 3000, false);
+        return false;
+    }
+
+    label.classList.remove("failure-red-background");
+    return true;
+};
+
+function extraDataValidateEqualSign(input, label) {
+    if(!input.includes("=")){
+        buttonFeedback(label, "Must contain an equal sign", 3000, false);
+        return false;
+    }
+    let value = input.split("=");
+
+    if(!value[0].match(/^[A-z0-9]*$/g) || value[0] == ""){
+        buttonFeedback(label, "Only letters allowed left of equal sign", 3000, false);
+        return false;
+    }
+    if(!value[1].match(/^[A-z0-9\s\-\/\:\.\%]+$/g) || value[1] == ""){
+        buttonFeedback(label, "Illegal characters right of equal sign", 3000, false);
+        return false;
+    }
+
     label.classList.remove("failure-red-background");
     return true;
 };
 
 function validateColonSign(input, label) {
-    if (!input.match(/^[A-z]*:[A-z0-9\s]+(,[0-9]+|$)/g)) {
-        buttonFeedback(label, "Must contain values on both sides of a colon sign", 3000, false);
+    if(!input.includes(":")){
+        buttonFeedback(label, "Must contain a colon sign", 3000, false);
         return false;
+    }
+    let value = input.split(":");
+    if(!value[0].match(/^[A-z]*$/g) || value[0] == ""){
+        buttonFeedback(label, "Value left of colon can only be letters", 3000, false);
+        return false;
+    }
+    else if(!value[1].match(/^[A-z0-9\s]+(,[0-9]+$)/g) || value[0] == ""){
+        if(!value[1].match(/^[A-z0-9\s]+$/g)){
+            buttonFeedback(label, "Value right of colon cannot be special characters or empty", 3000, false);
+            return false;
+        }
     }
     label.classList.remove("failure-red-background");
     return true;
 };
 
-// function extraDatavalidateColonSign(input, label) {
-//     if (!input.match(/^[A-z\.]*:[A-z0-9\s]+(,[0-9]+|$)/g)) {
-//         // console.log("Missing colon sign");
-//         buttonFeedback(label, "Must contain values on both sides of a colon sign", 3000, false);
-//         return false;
-//     }
-//     label.classList.remove("failure-red-background");
-//     return true;
-// };
+function extraDataValidateColonSign(input, label) {
+    if(!input.includes(":")){
+        buttonFeedback(label, "Must contain a colon sign", 3000, false);
+        return false;
+    }
+    let value = input.split(":");
+    if(!value[0].match(/^[A-z0-9]*$/g) || value[0] == ""){
+        buttonFeedback(label, "Value left of colon cannot be special characters or empty", 3000, false);
+        return false;
+    }
+    else if(!value[1].match(/^[A-z0-9\s]+(,[0-9]+$)/g) || value[0] == ""){
+        if(!value[1].match(/^[A-z0-9\s]+$/g)){
+            buttonFeedback(label, "Value right of colon cannot be special characters or empty", 3000, false);
+            return false;
+        }
+    }
+    label.classList.remove("failure-red-background");
+    return true;
+};
 
 function validateNumbers(input, label){
     if (isNaN(input)) {
@@ -219,13 +273,29 @@ function validateNumbers(input, label){
 }
 
 function validateRecommendationBoxKey(input,label){
-    if(!input.match(/^[A-z0-9]+$/g) && !input.match(/^[A-z0-9]+,[A-z0-9]+$/)){
-        // console.log("Incorrect formatting");
-        buttonFeedback(label, "Box id's must be separated by a comma", 3000, false);
-        return false;
+    if(!input.includes(",")){
+        if(!input.match(/^[A-z0-9]+$/g)){
+            buttonFeedback(label, "Box id can only contain letters and numbers", 3000, false);
+            return false; 
+        }
+        label.classList.remove("failure-red-background");
+        return true;
     }
-    label.classList.remove("failure-red-background");
-    return true;
+    else{
+        let values = input.split(",");
+        let error = false;
+        values.forEach((value)=>{
+            if(!value.match(/^[A-z0-9]+$/g)){
+                error = true;
+            }
+        })
+        if(error){
+            buttonFeedback(label, "One or more box id's contain illegal characters", 3000, false);
+            return false;
+        }
+        label.classList.remove("failure-red-background");
+        return true;
+    }
 }
 
 function validateNoSpecialCharacters(input,label){
