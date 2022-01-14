@@ -9,6 +9,8 @@ let mainEndpointOutputResponseWindowElem = document.querySelector(".main__endpoi
 let mainEndpointOutputResponseElem = document.querySelector(".main__endpoint-test-response-output"); // endpoint-tester.js
 let mainEndpointOutputResponseElemAdvancedSimpleReponseView = document.querySelector(".main__endpoint-test-response-window-simple-advanced-btn"); // endpoint-tester.js, response-window.js
 let APIresponse = "";
+// If window.location.hash exists, then remove the hashtag and store the value. if window.location.hash does not exist, set the value to recommendation-rest-endpoint.
+let activeTab = window.location.hash ? window.location.hash.split("#").pop() : "recommendation-rest-endpoint";
 
 function buttonFeedback(button, text, time, status){
     // if status is not provided or provided as true then show background color as green, otherwise show it as red.
@@ -23,4 +25,8 @@ function buttonFeedback(button, text, time, status){
         button.innerHTML = defaultText;
         button.disabled = false;
     }, timer);
+}
+
+function activeTabChecker(tab){
+    return tab === activeTab // compare value provided with activeTab and return true or false respectively.
 }

@@ -1,17 +1,17 @@
 mainEndpointOutputTestBtnElem.addEventListener("click", () => {
-    if (mainEndpointConstructorDescriptionElem.textContent.includes("Recommendation")) {
+    if (activeTabChecker("recommendation-rest-endpoint")) {
         if (!mainEndpointOutputElem.querySelector(".ids")) {
             buttonFeedback(mainEndpointOutputTestBtnElem, "Missing required parameter", 3000, false);
             return;
         }
     }
-    else if (mainEndpointConstructorDescriptionElem.textContent.includes("Search")) {
+    else if (activeTabChecker("search-rest-endpoint")) {
         if (!mainEndpointOutputElem.querySelector(".key") || !mainEndpointOutputElem.querySelector(".q")) {
             buttonFeedback(mainEndpointOutputTestBtnElem, "Missing required parameter", 3000, false);
             return;
         }
     }
-    else if (mainEndpointConstructorDescriptionElem.textContent.includes("Tracking")) {
+    else if (activeTabChecker("tracking-user-id-endpoint")) {
         if (!mainEndpointOutputElem.querySelector(".websiteUuid") || !mainEndpointOutputElem.querySelector(".hello_retail_id")) {
             buttonFeedback(mainEndpointOutputTestBtnElem, "Missing required parameter", 3000, false);
             return;
@@ -26,8 +26,8 @@ mainEndpointOutputTestBtnElem.addEventListener("click", () => {
             return res.json();
         })
         .then((data) => {
-            if(mainEndpointConstructorDescriptionElem.textContent.includes("Search") || mainEndpointConstructorDescriptionElem.textContent.includes("Recommendation")){
-                if (mainEndpointConstructorDescriptionElem.textContent.includes("Recommendation")) {
+            if(activeTabChecker("search-rest-endpoint") || activeTabChecker("recommendation-rest-endpoint")){
+                if (activeTabChecker("recommendation-rest-endpoint")) {
                     let recomResponse = Object.keys(data.result)[0];
                     data = data.result[recomResponse];
                 }
@@ -37,7 +37,7 @@ mainEndpointOutputTestBtnElem.addEventListener("click", () => {
                 mainEndpointOutputResponseElemAdvancedSimpleReponseView.classList.remove("hidden");
                 buildSimpleView(APIresponse);
             }
-            else if(mainEndpointConstructorDescriptionElem.textContent.includes("Tracking")){
+            else if(activeTabChecker("tracking-user-id-endpoint")){
                 APIresponse = data;
                 mainEndpointOutputResponseElemAdvancedSimpleReponseView.classList.add("hidden");
                 trackingUserIdview(APIresponse);
