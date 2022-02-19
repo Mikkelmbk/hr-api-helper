@@ -39,10 +39,13 @@ mainEndpointConstructorContainerElems.forEach((item) => {
     else if (identifier === "hierarchy") {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
-            if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
-            if(!validateRecommendationBoxKey(mainEndpointConstructorInputProductBoxIdRecomElem.value,mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
-            let hierarchyIndexOne = 0;
-            let preText = `${handleUrlVariable()}crawledData[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${param}][${hierarchyIndexOne}][]=${handleUrlEncoding(input.value)}`;
+            let recomBoxIdElem = document.querySelector("span.ids");
+            if(!recommendationBoxKeyPresent(recomBoxIdElem, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
+            recomBoxIdElem = recomBoxIdElem.textContent.split("&ids=").pop();
+            let pickedRecomBoxId = 0;
+            let pickedHierarchyIndex = 0;
+
+            let preText = `${handleUrlVariable()}crawledData[${handleUrlEncoding(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][${param}][${pickedHierarchyIndex}][]=${handleUrlEncoding(input.value)}`;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(preText, param);
         });
@@ -50,11 +53,16 @@ mainEndpointConstructorContainerElems.forEach((item) => {
     else if (identifier === "crawledData") {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
-            if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             if(!validateEqualSign(input.value, label)) return;
+
+            let recomBoxIdElem = document.querySelector("span.ids");
+            if(!recommendationBoxKeyPresent(recomBoxIdElem, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
+            recomBoxIdElem = recomBoxIdElem.textContent.split("&ids=").pop();
+            let pickedRecomBoxId = 0;
+
             let formattedValue = input.value.split("=");
             // console.log(formattedValue);
-            let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${handleUrlEncoding(formattedValue.shift())}]=${handleUrlEncoding(formattedValue.pop())}`;
+            let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][${handleUrlEncoding(formattedValue.shift())}]=${handleUrlEncoding(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(preText, param);
         })
@@ -62,11 +70,16 @@ mainEndpointConstructorContainerElems.forEach((item) => {
     else if (identifier === "crawledData-list") {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
-            if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             if(!validateEqualSign(input.value, label)) return;
+
+            let recomBoxIdElem = document.querySelector("span.ids");
+            if(!recommendationBoxKeyPresent(recomBoxIdElem, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
+            recomBoxIdElem = recomBoxIdElem.textContent.split("&ids=").pop();
+            let pickedRecomBoxId = 0;
+
             let formattedValue = input.value.split("=");
             // console.log(formattedValue);
-            let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][${handleUrlEncoding(formattedValue.shift())}][]=${handleUrlEncoding(formattedValue.pop())}`;
+            let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][${handleUrlEncoding(formattedValue.shift())}][]=${handleUrlEncoding(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(preText, param);
         })
@@ -74,10 +87,15 @@ mainEndpointConstructorContainerElems.forEach((item) => {
     else if(identifier === "extraData-crawledData"){
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
-            if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             if(!extraDataValidateEqualSign(input.value, label)) return;
+
+            let recomBoxIdElem = document.querySelector("span.ids");
+            if(!recommendationBoxKeyPresent(recomBoxIdElem, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
+            recomBoxIdElem = recomBoxIdElem.textContent.split("&ids=").pop();
+            let pickedRecomBoxId = 0;
+
             let formattedValue = input.value.split("=");
-            let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraData][${handleUrlEncoding(formattedValue.shift())}]=${handleUrlEncoding(formattedValue.pop())}`;
+            let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][extraData][${handleUrlEncoding(formattedValue.shift())}]=${handleUrlEncoding(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(preText, param);
         })
@@ -85,10 +103,15 @@ mainEndpointConstructorContainerElems.forEach((item) => {
     else if(identifier === "extraDataList-crawledData"){
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
-            if(!validateNotEmpty(mainEndpointConstructorInputProductBoxIdRecomElem.value, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
             if(!extraDataValidateEqualSign(input.value, label)) return;
+
+            let recomBoxIdElem = document.querySelector("span.ids");
+            if(!recommendationBoxKeyPresent(recomBoxIdElem, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
+            recomBoxIdElem = recomBoxIdElem.textContent.split("&ids=").pop();
+            let pickedRecomBoxId = 0;
+
             let formattedValue = input.value.split("=");
-            let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(mainEndpointConstructorInputProductBoxIdRecomElem.value, 0))}][extraDataList][${handleUrlEncoding(formattedValue.shift())}][]=${handleUrlEncoding(formattedValue.pop())}`;
+            let preText = `${handleUrlVariable()}${param}[${handleUrlEncoding(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][extraDataList][${handleUrlEncoding(formattedValue.shift())}][]=${handleUrlEncoding(formattedValue.pop())}`;
             buttonFeedback(btn, btn.textContent, 1000);
             addToEndpoint(preText, param);
         })
@@ -296,6 +319,16 @@ function validateRecommendationBoxKey(input,label){
         label.classList.remove("failure-red-background");
         return true;
     }
+}
+
+function recommendationBoxKeyPresent(boxKeyElem,label){
+    console.log(boxKeyElem);
+    if(!boxKeyElem){
+        buttonFeedback(label, "No box Id(s) present in request url", 3000, false);
+        return false;
+    }
+    label.classList.remove("failure-red-background");
+    return true;
 }
 
 function validateNoSpecialCharacters(input,label){
