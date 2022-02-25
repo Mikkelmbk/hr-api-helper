@@ -8,6 +8,7 @@ let mainEndpointOutputTestBtnElem = document.querySelector(".main__endpoint-outp
 let mainEndpointOutputResponseWindowElem = document.querySelector(".main__endpoint-test-response-window-description"); // endpoint-tester.js
 let mainEndpointOutputResponseElem = document.querySelector(".main__endpoint-test-response-output"); // endpoint-tester.js
 let mainEndpointOutputResponseElemAdvancedSimpleReponseView = document.querySelector(".main__endpoint-test-response-window-simple-advanced-btn"); // endpoint-tester.js, response-window.js
+let modalOverlayWrapperElem = document.querySelector(".modal-wrapper");
 let APIresponse = "";
 // If window.location.hash exists, then remove the hashtag and store the value. if window.location.hash does not exist, set the value to recommendation-rest-endpoint.
 let activeTab = window.location.hash ? window.location.hash.split("#").pop() : "recommendation-rest-endpoint";

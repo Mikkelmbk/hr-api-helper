@@ -48,3 +48,9 @@
     margin:5px 0;
     cursor:pointer;
 }
+
+.modal-text{
+    text-align:center;
+    color: var(--white-full-opacity-color);
+    font-family: Arial, Helvetica, sans-serif;
+}

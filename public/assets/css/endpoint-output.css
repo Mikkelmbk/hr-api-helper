@@ -33,6 +33,7 @@
 .main__endpoint-output,.main__endpoint-output--addition{
     font-family:'Fira Mono', monospace;
     color:var(--white-full-opacity-color);
+    word-break:break-all;
 }
 
 .main__endpoint-output--addition{
