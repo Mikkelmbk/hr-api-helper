@@ -36,6 +36,20 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             addToEndpoint(`${handleUrlVariable()}${param}=${handleUrlEncoding(input.value)}`, param);
         })
     }
+    // else if (identifier === "hierarchy") {
+    //     btn.addEventListener("click", () => {
+    //         if(!validateNotEmpty(input.value, label)) return;
+    //         let recomBoxIdElem = document.querySelector("span.ids");
+    //         if(!recommendationBoxKeyPresent(recomBoxIdElem, mainEndpointConstructorLabelProductBoxIdRecomElem)) return;
+    //         recomBoxIdElem = recomBoxIdElem.textContent.split("&ids=").pop();
+    //         let pickedRecomBoxId = 0;
+    //         let pickedHierarchyIndex = 0;
+
+    //         let preText = `${handleUrlVariable()}crawledData[${handleUrlEncoding(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][${param}][${pickedHierarchyIndex}][]=${handleUrlEncoding(input.value)}`;
+    //         buttonFeedback(btn, btn.textContent, 1000);
+    //         addToEndpoint(preText, param);
+    //     });
+    // }
     else if (identifier === "hierarchy") {
         btn.addEventListener("click", () => {
             if(!validateNotEmpty(input.value, label)) return;
@@ -45,9 +59,15 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             let pickedRecomBoxId = 0;
             let pickedHierarchyIndex = 0;
 
-            let preText = `${handleUrlVariable()}crawledData[${handleUrlEncoding(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][${param}][${pickedHierarchyIndex}][]=${handleUrlEncoding(input.value)}`;
-            buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(preText, param);
+            let preText = "";
+            if(!recomBoxIdElem.includes(",")){
+                preText = `${handleUrlVariable()}crawledData[${handleUrlEncoding(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][${param}][${pickedHierarchyIndex}][]=${handleUrlEncoding(input.value)}`;
+                buttonFeedback(btn, btn.textContent, 1000);
+                addToEndpoint(preText, param);
+            }
+            else{
+                
+            }
         });
     }
     else if (identifier === "crawledData") {
