@@ -288,7 +288,7 @@ function validateColonSign(input, label) {
         buttonFeedback(label, "Value left of colon can only be letters", 3000, false);
         return false;
     }
-    else if(!value[1].match(/^[A-z0-9\s]+(,[0-9]+$)/g) || value[0] == ""){
+    else if(!value[1].match(/^[A-z0-9\s]+(,[0-9]+$|-[0-9]+$)/g) || value[0] == ""){
         if(!value[1].match(/^[A-z0-9\s]+$/g)){
             buttonFeedback(label, "Value right of colon cannot be special characters or empty", 3000, false);
             return false;
