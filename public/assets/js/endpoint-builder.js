@@ -222,11 +222,13 @@ function handleUrlVariable(){
 }
 
 function handleUrlEncoding(input){
+    console.log("handleUrlEncoding: ",input);
     return input.replace(/\s/g,"%20").replace("&","%26");
 }
 
 function validateSearchFilterWhitespace(input){
-    return input.replace(/\s/g, "\\ ");
+    console.log("validateSearchFilterWhitespace: ",input);
+    return input.replace(/\s/g, "\\ ").replace("&","%26");
 }
 
 function validateNotEmpty(input, label) {
@@ -288,8 +290,8 @@ function validateColonSign(input, label) {
         buttonFeedback(label, "Value left of colon can only be letters", 3000, false);
         return false;
     }
-    else if(!value[1].match(/^[A-z0-9\s]+(,[0-9]+$|-[0-9]+$)/g) || value[0] == ""){
-        if(!value[1].match(/^[A-z0-9\s]+$/g)){
+    else if(!value[1].match(/^[A-z0-9\s\$\/\&\Ø\Æ\Å\ø\æ\å\,\-]+(,[0-9]+$|-[0-9]+$)/g) || value[0] == ""){
+        if(!value[1].match(/^[A-z0-9\s\$\/\&\Ø\Æ\Å\ø\æ\å\,\-]+$/g)){
             buttonFeedback(label, "Value right of colon cannot be special characters or empty", 3000, false);
             return false;
         }
