@@ -247,11 +247,11 @@ function validateEqualSign(input, label) {
     }
     let value = input.split("=");
 
-    if(!value[0].match(/^[A-z]*$/g) || value[0] == ""){
+    if(!value[0].match(/^[A-z]*$/gi) || value[0] == ""){
         buttonFeedback(label, "Only letters allowed left of equal sign", 3000, false);
         return false;
     }
-    if(!value[1].match(/^[A-z0-9\s\-\/\:\.\%]+$/g) || value[1] == ""){
+    if(!value[1].match(/^[A-z0-9\s\-\/\:\.\%æøå]+$/gi) || value[1] == ""){
         buttonFeedback(label, "Illegal characters right of equal sign", 3000, false);
         return false;
     }
@@ -267,11 +267,11 @@ function extraDataValidateEqualSign(input, label) {
     }
     let value = input.split("=");
 
-    if(!value[0].match(/^[A-z0-9]*$/g) || value[0] == ""){
+    if(!value[0].match(/^[A-z0-9æøå]*$/gi) || value[0] == ""){
         buttonFeedback(label, "Only letters allowed left of equal sign", 3000, false);
         return false;
     }
-    if(!value[1].match(/^[A-z0-9\s\-\/\:\.\%]+$/g) || value[1] == ""){
+    if(!value[1].match(/^[A-z0-9\s\-\/\:\.\%æøå]+$/gi) || value[1] == ""){
         buttonFeedback(label, "Illegal characters right of equal sign", 3000, false);
         return false;
     }
@@ -290,8 +290,8 @@ function validateColonSign(input, label) {
         buttonFeedback(label, "Value left of colon can only be letters", 3000, false);
         return false;
     }
-    else if(!value[1].match(/^[A-z0-9\s\$\/\&\Ø\Æ\Å\ø\æ\å\,\-]+(,[0-9]+$|-[0-9]+$)/g) || value[0] == ""){
-        if(!value[1].match(/^[A-z0-9\s\$\/\&\Ø\Æ\Å\ø\æ\å\,\-]+$/g)){
+    else if(!value[1].match(/^[A-z0-9\s\$\/\&æøå,\-]+(,[0-9]+$|-[0-9]+$)/gi) || value[0] == ""){
+        if(!value[1].match(/^[A-z0-9\s\$\/\&æøå,\-]+$/gi)){
             buttonFeedback(label, "Value right of colon cannot be special characters or empty", 3000, false);
             return false;
         }
@@ -310,8 +310,8 @@ function extraDataValidateColonSign(input, label) {
         buttonFeedback(label, "Value left of colon cannot be special characters or empty", 3000, false);
         return false;
     }
-    else if(!value[1].match(/^[A-z0-9\s]+(,[0-9]+$)/g) || value[0] == ""){
-        if(!value[1].match(/^[A-z0-9\s]+$/g)){
+    else if(!value[1].match(/^[A-z0-9\sæøå]+(,[0-9]+$)/gi) || value[0] == ""){
+        if(!value[1].match(/^[A-z0-9\sæøå]+$/gi)){
             buttonFeedback(label, "Value right of colon cannot be special characters or empty", 3000, false);
             return false;
         }
