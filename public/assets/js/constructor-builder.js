@@ -1,8 +1,16 @@
 let constructorData = [
     {
+        identifier: "product-box-id",
+        labelText: "Recommendation box key (Required)",
+        placeholderText: "Example: 1234 | 1234,5678",
+        constructor: "recom",
+        param:"ids",
+        description: "A parameter which will tell our system which recommendation(s) it should use to find products."
+    },
+    {
         identifier: "url",
         labelText: "Context url (Optional)",
-        placeholderText: "https://www.lomax.dk/rengoering/vaernemidler/engangshandsker/engangshandsker-hdpe-plast-one-size-100-stk-60090860/",
+        placeholderText: "Example: https://www.lomax.dk/rengoering/vaernemidler/engangshandsker/engangshandsker-hdpe-plast-one-size-100-stk-60090860/",
         constructor: "recom",
         param: "url",
         description: "A parameter which will tell our system to find products which are relevant to this one."
@@ -10,18 +18,10 @@ let constructorData = [
     {
         identifier: "tracking-user-id",
         labelText: "Tracking user id (Optional)",
-        placeholderText: "a95g845103y4tk45g19he10",
+        placeholderText: "Example: a95g845103y4tk45g19he10",
         constructor: "recom",
         param:"trackingUserId",
         description: "A parameter which will tell our system which hierarchies this user has shown interest for (used through the user.bias.hierarchy filter)."
-    },
-    {
-        identifier: "product-box-id",
-        labelText: "Recommendation box key (Required)",
-        placeholderText: "Example: 1234 | 1234,5678",
-        constructor: "recom",
-        param:"ids",
-        description: "A parameter which will tell our system which recommendation(s) it should use to find products."
     },
     {
         identifier: "hierarchy",
@@ -64,20 +64,20 @@ let constructorData = [
         description: "A parameter which will tell our system which customer defined lists of values it should find products from."
     },
     {
-        identifier: "query",
-        labelText: "Search Query (Required)",
-        placeholderText: "Syver stolen",
-        constructor: "search",
-        param: "q",
-        description: "A parameter which will tell our system which phrase or keyword should be searched for."
-    },
-    {
         identifier: "search-key-id",
         labelText: "Search key Id (Required)",
-        placeholderText: "a95g845103y4tk45g19he10",
+        placeholderText: "Example: a95g845103y4tk45g19he10",
         constructor: "search",
         param: "key",
         description: "A parameter which will tell our system which search configuration it should use to find products."
+    },
+    {
+        identifier: "query",
+        labelText: "Search Query (Required)",
+        placeholderText: "Example: Syver stolen",
+        constructor: "search",
+        param: "q",
+        description: "A parameter which will tell our system which phrase or keyword should be searched for."
     },
     {
         identifier: "product-count",
