@@ -138,7 +138,7 @@ let constructorData = [
 ];
 
 constructorData.forEach((data) => {
-    let constructorContainerElem = document.createElement('section');
+    let constructorContainerElem = document.createElement('form');
     let structureDivElem = document.createElement('div');
     let constructorInputElem = document.createElement('input');
     let constructorLabelElem = document.createElement('label');
