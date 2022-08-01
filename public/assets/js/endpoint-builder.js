@@ -239,7 +239,7 @@ function handleRecomUrlEncoding(input) {
 }
 
 function handleSearchUrlEncoding(input) {
-    return input.replace(/\s/g, "\\ ").replace(/\&/g, "%26").replace(/\+/,"%2B");
+    return input.replace(/\s/g, "\\ ").replace(/\&/g, "%26").replace(/\+/g,"%2B");
 }
 
 function validateNotEmpty(input, label) {
