@@ -25,7 +25,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if (!validateNoSpecialCharacters(input.value, label)) return;
             if (!validateNoDuplicates(input, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`${handleUrlVariable()}${param}=${handleRecomUrlEncoding(input.value)}`, param);
+            addToEndpoint(`${handleUrlVariable()}${param}=${handleRecomUrlStructuring(input.value)}`, param);
         })
     }
     else if (identifier === "product-box-id") {
@@ -35,7 +35,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if (!validateRecommendationBoxKey(input.value, label)) return;
             if (!validateNoDuplicates(input, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`${handleUrlVariable()}${param}=${handleRecomUrlEncoding(input.value)}`, param);
+            addToEndpoint(`${handleUrlVariable()}${param}=${handleRecomUrlStructuring(input.value)}`, param);
         })
     }
     else if (identifier === "hierarchy") {
@@ -55,7 +55,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             hierarchyRequestUrl(pickedRecomBoxId);
             function hierarchyRequestUrl(pickedRecomBoxId) {
                 console.log(pickedRecomBoxId);
-                let preText = `${handleUrlVariable()}crawledData[${handleRecomUrlEncoding(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][${param}][${pickedHierarchyIndex}][]=${handleRecomUrlEncoding(input.value)}`;
+                let preText = `${handleUrlVariable()}crawledData[${handleRecomUrlStructuring(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][${param}][${pickedHierarchyIndex}][]=${handleRecomUrlStructuring(input.value)}`;
                 buttonFeedback(btn, btn.textContent, 1000);
                 addToEndpoint(preText, param);
             }
@@ -79,7 +79,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             crawledDataRequestUrl(pickedRecomBoxId);
             function crawledDataRequestUrl(pickedRecomBoxId) {
                 let formattedValue = input.value.split("=");
-                let preText = `${handleUrlVariable()}${param}[${handleRecomUrlEncoding(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][${handleRecomUrlEncoding(formattedValue.shift())}]=${handleRecomUrlEncoding(formattedValue.pop())}`;
+                let preText = `${handleUrlVariable()}${param}[${handleRecomUrlStructuring(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][${handleRecomUrlStructuring(formattedValue.shift())}]=${handleRecomUrlStructuring(formattedValue.pop())}`;
                 buttonFeedback(btn, btn.textContent, 1000);
                 addToEndpoint(preText, param);
             }
@@ -103,7 +103,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             crawledDataListRequestUrl(pickedRecomBoxId);
             function crawledDataListRequestUrl(pickedRecomBoxId) {
                 let formattedValue = input.value.split("=");
-                let preText = `${handleUrlVariable()}${param}[${handleRecomUrlEncoding(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][${handleRecomUrlEncoding(formattedValue.shift())}][]=${handleRecomUrlEncoding(formattedValue.pop())}`;
+                let preText = `${handleUrlVariable()}${param}[${handleRecomUrlStructuring(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][${handleRecomUrlStructuring(formattedValue.shift())}][]=${handleRecomUrlStructuring(formattedValue.pop())}`;
                 buttonFeedback(btn, btn.textContent, 1000);
                 addToEndpoint(preText, param);
             }
@@ -127,7 +127,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             extraDataCrawledDataRequestUrl(pickedRecomBoxId);
             function extraDataCrawledDataRequestUrl(pickedRecomBoxId) {
                 let formattedValue = input.value.split("=");
-                let preText = `${handleUrlVariable()}${param}[${handleRecomUrlEncoding(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][extraData][${handleRecomUrlEncoding(formattedValue.shift())}]=${handleRecomUrlEncoding(formattedValue.pop())}`;
+                let preText = `${handleUrlVariable()}${param}[${handleRecomUrlStructuring(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][extraData][${handleRecomUrlStructuring(formattedValue.shift())}]=${handleRecomUrlStructuring(formattedValue.pop())}`;
                 buttonFeedback(btn, btn.textContent, 1000);
                 addToEndpoint(preText, param);
             }
@@ -150,7 +150,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             extraDataListCrawledDataRequestUrl(pickedRecomBoxId);
             function extraDataListCrawledDataRequestUrl(pickedRecomBoxId) {
                 let formattedValue = input.value.split("=");
-                let preText = `${handleUrlVariable()}${param}[${handleRecomUrlEncoding(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][extraDataList][${handleRecomUrlEncoding(formattedValue.shift())}][]=${handleRecomUrlEncoding(formattedValue.pop())}`;
+                let preText = `${handleUrlVariable()}${param}[${handleRecomUrlStructuring(recommendationBoxKeyPicker(recomBoxIdElem, pickedRecomBoxId))}][extraDataList][${handleRecomUrlStructuring(formattedValue.shift())}][]=${handleRecomUrlStructuring(formattedValue.pop())}`;
                 buttonFeedback(btn, btn.textContent, 1000);
                 addToEndpoint(preText, param);
             }
@@ -173,7 +173,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if (!validateNotEmpty(input.value, label)) return;
             if (!validateColonSign(input.value, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`${handleUrlVariable()}${param}=${handleSearchUrlEncoding(input.value)}`, param);
+            addToEndpoint(`${handleUrlVariable()}${param}=${handleSearchUrlStructuring(input.value)}`, param);
         });
     }
     else if (identifier === "extraData-filters") {
@@ -182,7 +182,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if (!validateNotEmpty(input.value, label)) return;
             if (!extraDataValidateColonSign(input.value, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`${handleUrlVariable()}${param}=extraData.${handleSearchUrlEncoding(input.value)}`, param);
+            addToEndpoint(`${handleUrlVariable()}${param}=extraData.${handleSearchUrlStructuring(input.value)}`, param);
         });
     }
     else if (identifier === "extraDataList-filters") {
@@ -191,7 +191,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if (!validateNotEmpty(input.value, label)) return;
             if (!extraDataValidateColonSign(input.value, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`${handleUrlVariable()}${param}=extraDataList.${handleSearchUrlEncoding(input.value)}`, param);
+            addToEndpoint(`${handleUrlVariable()}${param}=extraDataList.${handleSearchUrlStructuring(input.value)}`, param);
         });
     }
     // Tracking user id event
@@ -201,7 +201,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if (!validateNotEmpty(input.value, label)) return;
             if (!validateNoDuplicates(input, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`${handleUrlVariable()}${param}=${handleRecomUrlEncoding(input.value)}`, param);
+            addToEndpoint(`${handleUrlVariable()}${param}=${handleRecomUrlStructuring(input.value)}`, param);
         });
     }
     // general events
@@ -211,7 +211,7 @@ mainEndpointConstructorContainerElems.forEach((item) => {
             if (!validateNotEmpty(input.value, label)) return;
             if (!validateNoDuplicates(input, label)) return;
             buttonFeedback(btn, btn.textContent, 1000);
-            addToEndpoint(`${handleUrlVariable()}${param}=${handleRecomUrlEncoding(input.value)}`, param);
+            addToEndpoint(`${handleUrlVariable()}${param}=${handleRecomUrlStructuring(input.value)}`, param);
         });
     }
 
@@ -234,12 +234,21 @@ function handleUrlVariable() {
     return !mainEndpointOutputElem.textContent.includes("?") ? "?" : "&";
 }
 
-function handleRecomUrlEncoding(input) {
-    return input.replace(/\s/g, "%20").replace("&", "%26");
+function handleRecomUrlStructuring(input) {
+    return input
+    .replace(/\s/g, "%20")
+    .replace("&", "%26");
 }
 
-function handleSearchUrlEncoding(input) {
-    return input.replace(/\s/g, "\\ ").replace(/\&/g, "%26").replace(/\+/g,"%2B");
+function handleSearchUrlStructuring(input) {
+    return input
+    .replace(/\%/g, "%25")
+    .replace(/\s/g, "\\ ")
+    .replace(/\&/g, "%26")
+    .replace(/\+/g, "%2B")
+    .replace(/\//g, "\\/")
+    .replace(/\!/g, "\\!")
+    .replace(/\#/g, "%23");
 }
 
 function validateNotEmpty(input, label) {
