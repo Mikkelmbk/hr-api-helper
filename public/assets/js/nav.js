@@ -10,17 +10,17 @@ function constructorDisplay(clickedTab){
     mainEndpointConstructorOuterTrackingUserIdContainerElem.classList.add("hidden");
     if(activeTabChecker("recommendation-rest-endpoint")){ // call activeTabChecker with a value, if said value is the same as activeTab return true.
         mainEndpointConstructorOuterRecomContainerElem.classList.remove("hidden");
-        mainEndpointOutputElem.innerHTML = "https://www.addwish.com/api/v1/product-recommendation/getProductBoxes?format=json";
+        mainEndpointOutputElem.innerHTML = "https://core.helloretail.com/api/v1/product-recommendation/getProductBoxes?format=json";
         mainEndpointConstructorDescriptionElem.innerHTML = "Recommendation REST Endpoint";
     }
     else if(activeTabChecker("search-rest-endpoint")){ // call activeTabChecker with a value, if said value is the same as activeTab return true.
         mainEndpointConstructorOuterSearchContainerElem.classList.remove("hidden");
-        mainEndpointOutputElem.innerHTML = "https://www.addwish.com/api/v1/search/partnerSearch?format=json&return_filters=true&category_count=12";
+        mainEndpointOutputElem.innerHTML = "https://core.helloretail.com/api/v1/search/partnerSearch?format=json&return_filters=true&category_count=12";
         mainEndpointConstructorDescriptionElem.innerHTML = "Search REST Endpoint";
     }
     else if(activeTabChecker("tracking-user-id-endpoint")){ // call activeTabChecker with a value, if said value is the same as activeTab return true.
         mainEndpointConstructorOuterTrackingUserIdContainerElem.classList.remove("hidden");
-        mainEndpointOutputElem.innerHTML = "https://addwish.com/api/v1/tracking/bias";
+        mainEndpointOutputElem.innerHTML = "https://core.helloretail.com/api/v1/tracking/bias";
         mainEndpointConstructorDescriptionElem.innerHTML = "Tracking user id Endpoint";
     }
 }
