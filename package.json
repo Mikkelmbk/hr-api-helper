@@ -1,0 +1,23 @@
+{
+  "name": "hr-api-helper",
+  "version": "1.0.0",
+  "description": "An interface to help build Hello retail API request urls",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikkelmbk/hr-api-helper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mikkelmbk/hr-api-helper/issues"
+  },
+  "homepage": "https://github.com/Mikkelmbk/hr-api-helper#readme",
+  "dependencies": {
+    "firebase": "^9.19.1"
+  }
+}
